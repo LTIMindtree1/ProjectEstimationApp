@@ -1,18 +1,19 @@
 
 <!DOCTYPE html>
-<html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-<link rel="stylesheet" href="/targetes/Homepage.css">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
-        <script src="src/main/resources/templates/webapp/Home.js"></script>
+<link rel="stylesheet" href=""th:href="@{/Homepage.css}">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+<script src=""th:src="@{/Home.js}"></script>
 
-<!--<script>  $(document).ready(function(){
+<script>  $(document).ready(function(){
   
   $("button").click(function(){
-    $(".secondcontainer").show();
+    $(".secondcontainer").hide();
+    alert("Hi");
   });
-});-->
+});
 </script>
 
 
