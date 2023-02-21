@@ -10,11 +10,12 @@ body {
   clear: both;
   visibility: hidden;
   height: 0;
+ 
 }
 
 .form_wrapper {
   background: #fff;
-  width: 400px;
+  width: 1000px;
   max-width: 100%;
   box-sizing: border-box;
   padding: 25px;
@@ -43,6 +44,7 @@ body {
 .form_wrapper .title_container {
   text-align: center;
   padding-bottom: 15px;
+  
 }
 .form_wrapper h3 {
   font-size: 1.1em;
@@ -55,6 +57,7 @@ body {
 }
 .form_wrapper .row {
   margin: 10px -15px;
+  width:50%;
 }
 .form_wrapper .row > div {
   padding: 0 15px;
