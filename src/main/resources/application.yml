@@ -1,0 +1,13 @@
+#Default Port
+server:
+  port: 8083
+
+#Database Conncetion
+spring:
+  jpa:
+    hibernate:
+      ddl-auto: none
+  datasource:
+    url:
+    username:
+    password:
