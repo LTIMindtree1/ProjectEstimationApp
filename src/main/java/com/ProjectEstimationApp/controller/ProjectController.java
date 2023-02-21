@@ -11,7 +11,7 @@ public class ProjectController  {
 	
 	@RequestMapping("/")
 	public ModelAndView Home() {
-		 ModelAndView modelAndView = new ModelAndView("Home.html");
+		 ModelAndView modelAndView = new ModelAndView("Home");
 		   // modelAndView.addObject("message", "Baeldung");
 		    return modelAndView;
 	}
