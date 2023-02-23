@@ -1,27 +1,47 @@
-
 <html>
-
 <head>
-	<link rel="stylesheet" href="css/estimation.css">
+<title>Welcome Page</title>
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
-<div class="form_wrapper">
+	<div class="header"><h1>Project Etimation Details</h1></div>
+    <input type="checkbox" id="openSidebarMenu">
+    <label for="openSidebarMenu" class="sidebarIconToggle">
+        <div class="spinner top"></div>
+        <div class="spinner middle"></div>
+        <div class="spinner bottom"></div>
+    </label>
+    <div id="sidebarMenu">
+        <ul class="menu">
+            <li><a href="#">Home</a></li>
+            <li><a href="#">About Us</a></li>
+            <li><a href="#">Gallery</a></li>
+            <li><a href="#">Products</a></li>
+            <li><a href="#">Contact Us</a></li>
+        </ul>
+    </div>
+    <div class="main">
+        
+        <p>Welcome To Temenos Infinity Family</p>
+        
+    </div>
+    
+    <div class="form_wrapper">
   <div class="form_container">
     <div class="title_container">
-      <h2>Estimation Framework</h2>
+      <h2>Project Estimation</h2>
     </div>
     <div class="row clearfix">
       <div class="">
         <form>
               <div class="input_field select_option">
-              <div> Channels</div>
-              <label for="Mobile"> Mobile</label>
-  <input type="checkbox" id="mobile" name="mobile" value="mobile"><br>
-<label for="Tablet"> Tablet</label>
-<input type="checkbox" id="Tablet" name="Tablet" value="Tablet"><br>
-<label for="Responsive web"> Responsive web </label>
-<input type="checkbox" id="Responsive" name="Responsive" value="Responsive">
-               
+                <select name="appType">
+                  <option>Select application type</option>
+                  <option value="Web">Web</option>
+                  <option value="Mobile">Mobile</option>
+		  <option value="IoT">IoT</option>
+                </select>
+                <div class="select_arrow"></div>
               </div>
 
           <div class="input_field"> 
@@ -42,14 +62,9 @@
                 
               </div>
         
-          <input class="button" type="submit" value="Submit" />
-        </form>
-      </div>
-    </div>
-  </div>
-</div>
-
-<p class="credit">Developed by Sachin & Sushant @ <a href="https://www.ltimindtree.com/" target="_blank">LTIMindtree</a></p>
-
+    
+    
+    
+    
 </body>
 </html>
