@@ -1,70 +1,42 @@
 <html>
 <head>
-<title>Welcome Page</title>
-<link rel="stylesheet" href="style.css">
+
+	<link rel="stylesheet" href="css/style.css">
+	<script language="JavaScript" type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<script src="js/estimation.js"></script>
 </head>
-<body>
-	<div class="header"><h1>Project Etimation Details</h1></div>
-    <input type="checkbox" id="openSidebarMenu">
-    <label for="openSidebarMenu" class="sidebarIconToggle">
-        <div class="spinner top"></div>
-        <div class="spinner middle"></div>
-        <div class="spinner bottom"></div>
-    </label>
-    <div id="sidebarMenu">
-        <ul class="menu">
-            <li><a href="#">Home</a></li>
-            <li><a href="#">About Us</a></li>
-            <li><a href="#">Gallery</a></li>
-            <li><a href="#">Products</a></li>
-            <li><a href="#">Contact Us</a></li>
-        </ul>
-    </div>
-    <div class="main">
-        
-        <p>Welcome To Temenos Infinity Family</p>
-        
-    </div>
-    
-    <div class="form_wrapper">
-  <div class="form_container">
-    <div class="title_container">
-      <h2>Project Estimation</h2>
-    </div>
-    <div class="row clearfix">
-      <div class="">
-        <form>
-              <div class="input_field select_option">
-                <select name="appType">
-                  <option>Select application type</option>
-                  <option value="Web">Web</option>
-                  <option value="Mobile">Mobile</option>
-		  <option value="IoT">IoT</option>
-                </select>
-                <div class="select_arrow"></div>
-              </div>
+<body class="closed-menu">
 
-          <div class="input_field"> 
-		<span><i aria-hidden="true" class="fa fa-envelope"></i></span>
-                <input type="number" name="month" placeholder="Duration in Months" required />
-          </div>
-         
+<nav class="vertical-menu-wrapper">
+  <div class="vertical-menu-logo">
+    <div>Inquiry</div>
+    <span class="open-menu-btn"><hr><hr><hr></span>
+  </div>
+  <ul class="vertical-menu">
+    <li>Schedule</li>
+    <li>Event</li>
+    <hr />
+    <li>Setting</li>
+    <li>Privacy</li>
+    <li id="user-info">LTIMindtree<span>LTI</span></li>
+  </ul>
+</nav>
 
-              <div class="input_field select_option">
-                <select name="appModule" multiple size="8" style="height: auto;">
-                  <option>Select Modules</option>
-                  <option value="Authentication">Authentication</option>
-                  <option value="Upload File">Upload File</option>
-		  <option value="Payment Getway">Payment Getway</option>
-		  <option value="Report - PDF">Report - PDF</option>
-		  <option value="Email">Email</option>
-                </select>
-                
-              </div>
-        
+
+<div class="content-wrapper">
+  <div class="contentH">
     
-    
-    
-    
+	<div class="topBar">
+            	<img class="logo" src="images/LTI_Logo.png">
+		<p class="topBar-Text">Project Estimation</p>
+        </div>
+
+  </div>
+  <div class="content">
+    Web Content
+  </div>
+</div>
+
+
 </body>
 </html>
