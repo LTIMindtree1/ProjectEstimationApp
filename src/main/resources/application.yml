@@ -3,19 +3,21 @@
 server:
   port: 8083
 
-#Database Conncetion
 spring:
+  mvc:
+  view:
+  prefix: /WEB-INF/jsp/
+  suffix: .jsp
   jpa:
+    show-sql: true
     hibernate:
       ddl-auto: none
   datasource:
-    url:
-    username:
-    password:
-=======
-spring:
-mvc:
-view:
-prefix: /WEB-INF/jsp/
-suffix: .jsp
->>>>>>> origin/Sachin
+    url: jdbc:mysql://localhost:3306/estimation
+    username: root
+    password: Sus@281996
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+
+
+
