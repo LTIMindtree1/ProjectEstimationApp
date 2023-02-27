@@ -1,13 +1,12 @@
-<<<<<<< HEAD
 #Default Port
 server:
   port: 8083
 
 spring:
   mvc:
-  view:
-  prefix: /WEB-INF/jsp/
-  suffix: .jsp
+    view:
+      prefix: /WEB-INF/jsp/
+      suffix: .jsp
   jpa:
     show-sql: true
     hibernate:
