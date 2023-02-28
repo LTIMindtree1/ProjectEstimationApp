@@ -8,16 +8,16 @@ import lombok.NoArgsConstructor;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
+
 @Entity
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-@Table(name = "questionlist")
-public class QuestionList {
+@Table(name = "riskmatigationlist")
+public class RiskMatigationList {
     @Id
-    private Long questionId;
-    private String questionCategory;
-    private String questionName;
-    private String questionType;
+    private Long matigationId;
+    private String rId;
+    private String matigationName;
 }

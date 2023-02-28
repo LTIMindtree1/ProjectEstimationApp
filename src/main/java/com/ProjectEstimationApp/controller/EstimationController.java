@@ -1,8 +1,7 @@
 package com.ProjectEstimationApp.controller;
 
-import com.ProjectEstimationApp.entity.ModuleList;
-import com.ProjectEstimationApp.entity.QuestionList;
-import com.ProjectEstimationApp.entity.SubModuleList;
+import com.ProjectEstimationApp.entity.*;
+import com.ProjectEstimationApp.model.QuestionListResponse;
 import com.ProjectEstimationApp.repository.ModuleRepository;
 import com.ProjectEstimationApp.repository.QuestionRepository;
 import com.ProjectEstimationApp.repository.SubModuleRepository;
@@ -28,7 +27,6 @@ public class EstimationController {
 	@GetMapping("/getModule")
 	public ResponseEntity<List<ModuleList>> getModule(){
 		List<ModuleList> li=moduleDBService.getModule();
-	/*	List<String> response = li.stream().map(e -> e.getModuleName()).collect(Collectors.toList());*/
 		return ResponseEntity.ok(li);
 	}
 
@@ -41,6 +39,16 @@ public class EstimationController {
 	public ResponseEntity<List<QuestionList>> getQuestion(){
 		List<QuestionList> questionLists = moduleDBService.getQuestion();
 		return ResponseEntity.ok(questionLists);
+	}
+	@GetMapping("/getAssumption")
+	public ResponseEntity<List<AssumptionList>> getAssumptionList(){
+		List<AssumptionList> assumptionList = moduleDBService.getAssumptionList();
+		return ResponseEntity.ok(assumptionList);
+	}
+	@GetMapping("/getRisk")
+	public ResponseEntity<List<RiskList>> getRiskList(){
+		List<RiskList> riskList = moduleDBService.getRisk();
+		return ResponseEntity.ok(riskList);
 	}
 
 }
