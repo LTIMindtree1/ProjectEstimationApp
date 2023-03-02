@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class EstimationController {
 	
 	//@RequestMapping("/")
+	//@GetMapping("/")
 	public String index() {
 		
 		return "index";
