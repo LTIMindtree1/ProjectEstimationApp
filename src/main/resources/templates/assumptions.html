@@ -1,10 +1,11 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
-	<link rel="stylesheet" th:href="@{css/questions.css}">
-	 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-	<!-- <script type="text/javascript" src="js/jquery-3.4.1.min.js"></script> -->
-	<script th:src="@{js/questions.js}"></script>
+<link rel="stylesheet" th:href="@{css/assumption.css}">
+<script type="text/javascript"
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<!-- <script type="text/javascript" src="js/jquery-3.4.1.min.js"></script> -->
+<script th:src="@{js/assumption.js}"></script>
 </head>
 <body class="closed-menu">
 
@@ -43,31 +44,33 @@
 			<form id="idForm">
 				<div id="idParentDiv">
 
-					<table id="idQuestions">
-					 <thead>
-						<tr>
-							<th class="td1">Select All<br>
-								<input type="checkbox" id="idSelectAll"/>
-							</th>
-							<th class="td2">Sr. No.</th>
-							<th class="td3">Category</th>
-							<th class="td4">Questions</th>
-							<th class="td5">Question Type</th>
-						</tr>
-</thead>
-<tbody>
- <tr th:each="employee:${qc}">
-  <td ><input type="checkbox" name="question" class="checkBoxClass" value="@{employee.id}"></td>
- <td th:text="${employee.id}"></td>
-        
-        <td th:text="${employee.category}"></td>
-        <td th:text="${employee.question}"></td>
-        <td th:text="${employee.type}"></td>
-        
-        
-  </tr> 
-</tbody>
+					<table id="idAssumption">
+						<thead>
+							<tr>
+								<th class="td1">Select All<br> <input type="checkbox"
+									id="idSelectAll" />
+								</th>
+								<th class="td2">Sr. No.</th>
+								<th class="td3">Category</th>
+								<th class="td4">Questions</th>
+								<th class="td5">Question Type</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr th:each="assumptionTable:${assum}">
+								<td><input type="checkbox" name="assum"
+									class="checkBoxClass" value="@{assumptionTable.id}"></td>
+								<td th:text="${assumptionTable.id}"></td>
+
+								<td th:text="${assumptionTable.category}"></td>
+								<td th:text="${assumptionTable.assumption}"></td>
+								<td th:text="${assumptionTable.type}"></td>
+
+
+							</tr>
+						</tbody>
 					</table>
+
 
 
 				</div>
