@@ -1,9 +1,10 @@
-<html>
-<head>
-	<link rel="stylesheet" href="css/style.css">
-	<!-- <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> -->
-	<script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
-	<script src="js/estimation.js"></script>
+<html xmlns:th="http://www.thymeleaf.org">
+<head >
+<meta charset="UTF-8">
+	<link rel="stylesheet" th:href="@{css/style.css}">
+	 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> 
+	<!-- <script type="text/javascript" src="js/jquery-3.4.1.min.js"></script> -->
+	<script th:src="@{js/estimation.js}"></script>
 </head>
 <body class="closed-menu">
 
@@ -17,12 +18,11 @@
 			</span>
 		</div>
 		<ul class="vertical-menu">
-			<li>Home</li>
-			<li>Estimation</li>
-			<li>
-			    <a href="/questions">RFP Questions</a>
-			</li>
-			<li>RFP Assumptions</li>
+			<li><a href="/home">Home</a></li>
+			<li><a href="/estimation">Estimation</a></li>
+			<li><a href="/questions">RFP Questions</a></li>
+			<li><a href="/assumptions">RFP Assumptions</a></li>
+			<li><a href="/risk">Risk</a></li>
 		</ul>
 			<button id="idBtnQueries" name="btnQueries">Ask Queries</button>
 		<ul class="vertical-menu">
@@ -40,7 +40,7 @@
 
 		</div>
 		<div class="content">
-			<form id="idForm">
+			<form id="idForm"  th:action="@{/questions}"  method="GET">
 				<div id="idParentDiv">
 					<div id="idProspectDiv">
 						<table id="idTableProspect">
@@ -89,15 +89,15 @@
 								</tr>
 								<tr>
 									<td>Mobile</td>
-									<td><input type="checkbox" id="idMobile" name="channel"></td>
+									<td><input type="checkbox" id="idMobile" name="channel" value="mobile"></td>
 								</tr>
 								<tr>
 									<td>Tablet</td>
-									<td><input type="checkbox" id="idTablet" name="channel"></td>
+									<td><input type="checkbox" id="idTablet" name="channel" value="tablet"></td>
 								</tr>
 								<tr>
 									<td>Responsive Web</td>
-									<td><input type="checkbox" id="idWeb" name="channel"></td>
+									<td><input type="checkbox" id="idWeb" name="channel" value="responsiveweb"></td>
 								</tr>
 							</table>
 							&nbsp;&nbsp;&nbsp;
@@ -156,7 +156,7 @@
 								</tr>
 								<tr>
 									<td>Is Transact the backend?</td>
-									<td><input type="checkbox" id="idFeatureTransact" name="transact"></td>
+									<td><input type="checkbox" id="idFeatureTransact" name="transact" value="yes"></td>
 								</tr>
 								<tr>
 									<td>&nbsp;</td>
@@ -176,14 +176,14 @@
 							</tr>
 							<tr>
 								<td>RB</td>
-								<td><input type="checkbox" id="idProductRB" name="product"></td>
+								<td><input type="checkbox" id="idProductRB" name="product" value="rb"></td>
 							</tr>
 							<tr>
 								<td>&nbsp;</td>
 							</tr>
 							<tr>
 								<td>SME</td>
-								<td><input type="checkbox" id="idProductSME" name="product"></td>
+								<td><input type="checkbox" id="idProductSME" name="product" value="sme"></td>
 							</tr>
 						</table>
 						</div>

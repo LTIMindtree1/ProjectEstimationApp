@@ -25,8 +25,33 @@ $(document).ready(function(){
      });
 
 
-$("#idSelectAll").click(function () {
+/*$("#idSelectAll").click(function () {
             $(".checkBoxClass").attr('checked', this.checked);
         });
+$("#idSelectAll").click(function () {
+    $(".checkBoxClass").prop('checked', $(this).prop('checked'));
+});
+$(".checkBoxClass").click(function () {
+    $("#idSelectAll").prop('checked', false);
+});*/
 
+ $('#idSelectAll').on('click',function(){
+        if(this.checked){
+            $('.checkBoxClass').each(function(){
+                this.checked = true;
+            });
+        }else{
+             $('.checkBoxClass').each(function(){
+                this.checked = false;
+            });
+        }
+    });
+    
+    $('.checkBoxClass').on('click',function(){
+        if($('.checkBoxClass:checked').length == $('.checkBoxClass').length){
+            $('#idSelectAll').prop('checked',true);
+        }else{
+            $('#idSelectAll').prop('checked',false);
+        }
+    });
 });
