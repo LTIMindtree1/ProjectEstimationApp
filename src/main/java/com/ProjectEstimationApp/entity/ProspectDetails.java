@@ -1,4 +1,4 @@
-package com.ProjectEstimationApp.model;
+package com.ProjectEstimationApp.entity;
 
 public class ProspectDetails {
 

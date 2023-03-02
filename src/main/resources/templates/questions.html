@@ -56,13 +56,13 @@
 						</tr>
 </thead>
 <tbody>
- <tr th:each="employee:${qc}">
-  <td ><input type="checkbox" name="question" class="checkBoxClass" value="@{employee.id}"></td>
- <td th:text="${employee.id}"></td>
+ <tr th:each="question:${questionLists}">
+  <td ><input type="checkbox" name="question" class="checkBoxClass" value="@{question.questionId}"></td>
+ <td th:text="${question.questionId}"></td>
         
-        <td th:text="${employee.category}"></td>
-        <td th:text="${employee.question}"></td>
-        <td th:text="${employee.type}"></td>
+        <td th:text="${question.questionCategory}"></td>
+        <td th:text="${question.questionName}"></td>
+        <td th:text="${question.questionType}"></td>
         
         
   </tr> 

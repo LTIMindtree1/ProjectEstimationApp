@@ -24,7 +24,6 @@ import java.util.stream.Collectors;
 
 
 import com.ProjectEstimationApp.model.AssumptionsList;
-import com.ProjectEstimationApp.model.ProspectDetails;
 import com.ProjectEstimationApp.model.QuestionsCollection;
 
 import ch.qos.logback.core.subst.Token.Type;
@@ -41,39 +40,46 @@ public class EstimationController {
 
 	private Model model=null;
 
+	@RequestMapping("/home")
+	public String Home() {
+		return "home";
+	}
+	
+	@RequestMapping("/estimation")
+	public String estimation() {
+
+		return "estimation";
+	}
+	
+	
 	@GetMapping("/getModule")
 	public ResponseEntity<List<ModuleList>> getModule() {
 		List<ModuleList> li = moduleDBService.getModule();
 		return ResponseEntity.ok(li);
 	}
 
-	@RequestMapping("/home")
-	public String Home() {
-		return "home";
+	
+	@GetMapping("/getQuestion")
+	public String getQuestion(Model model){
+		List<QuestionList> questionLists = moduleDBService.getQuestion();
+		System.out.println(questionLists);
+		model.addAttribute("questionLists",questionLists);
+		return "questions";
 	}
+	
 
-	@RequestMapping("/estimation")
-	public String estimation() {
-
-		return "estimation";
-	}
-
-	@PostMapping("/questions")
-	public String Contact(@ModelAttribute("prosepect") ProspectDetails prosepect) {
-	model.addAttribute("prosepect",prosepect);
-		return "moduleList";
-	}
+	/*
+	 * @PostMapping("/questions") public String Contact(@ModelAttribute("prosepect")
+	 * ProspectDetails prosepect) { model.addAttribute("prosepect",prosepect);
+	 * return "moduleList"; }
+	 */
 
 	@GetMapping("/getSubModule")
 	public ResponseEntity<List<SubModuleList>> getSubModule(){
 		List<SubModuleList> li=subModuleRepository.findAll();
 		return ResponseEntity.ok(li);
 	}
-	@GetMapping("/getQuestion")
-	public ResponseEntity<List<QuestionList>> getQuestion(){
-		List<QuestionList> questionLists = moduleDBService.getQuestion();
-		return ResponseEntity.ok(questionLists);
-	}
+	
 	@GetMapping("/getAssumption")
 	public ResponseEntity<List<AssumptionList>> getAssumptionList(){
 		List<AssumptionList> assumptionList = moduleDBService.getAssumptionList();
