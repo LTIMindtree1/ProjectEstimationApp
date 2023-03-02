@@ -22,7 +22,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import java.util.List;
 import java.util.stream.Collectors;
 
-@RestController
+
 import com.ProjectEstimationApp.model.AssumptionsList;
 import com.ProjectEstimationApp.model.ProspectDetails;
 import com.ProjectEstimationApp.model.QuestionsCollection;
@@ -39,11 +39,13 @@ public class EstimationController {
 	@Autowired
 	SubModuleRepository subModuleRepository;
 
-	@GetMapping("/getModule")
-	public ResponseEntity<List<ModuleList>> getModule(){
-		List<ModuleList> li=moduleDBService.getModule();
-		return ResponseEntity.ok(li);
 	private Model model=null;
+
+	@GetMapping("/getModule")
+	public ResponseEntity<List<ModuleList>> getModule() {
+		List<ModuleList> li = moduleDBService.getModule();
+		return ResponseEntity.ok(li);
+	}
 
 	@RequestMapping("/home")
 	public String Home() {
@@ -58,7 +60,7 @@ public class EstimationController {
 
 	@PostMapping("/questions")
 	public String Contact(@ModelAttribute("prosepect") ProspectDetails prosepect) {
-model.addAttribute("prosepect",prosepect);
+	model.addAttribute("prosepect",prosepect);
 		return "moduleList";
 	}
 
