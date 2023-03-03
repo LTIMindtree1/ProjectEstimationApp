@@ -1,5 +1,7 @@
 package com.ProjectEstimationApp.entity;
 
+import java.util.Arrays;
+
 public class ProspectDetails {
 
 	private String name;
@@ -13,16 +15,18 @@ public class ProspectDetails {
 	private String languageLTR;
 	private String languageRTL;
 	private String transact;
-	private String rb;
-	private String sme;
+	
+	private String[] product;
 
 	public ProspectDetails() {
 		super();
 	}
 
+	
+
 	public ProspectDetails(String name, String region, String bsgContact, String pdmContact, String tfocusID,
-			String cemTeam, String[] channel, String languageLTR, String languageRTL, String transact, String rb,
-			String sme) {
+			String cemTeam, String[] channel, String languageLTR, String languageRTL, String transact,
+			String[] product) {
 		super();
 		this.name = name;
 		this.region = region;
@@ -34,9 +38,10 @@ public class ProspectDetails {
 		this.languageLTR = languageLTR;
 		this.languageRTL = languageRTL;
 		this.transact = transact;
-		this.rb = rb;
-		this.sme = sme;
+		this.product = product;
 	}
+
+
 
 	public String[] getChannel() {
 		return channel;
@@ -69,21 +74,12 @@ public class ProspectDetails {
 	public void setTransact(String transact) {
 		this.transact = transact;
 	}
-
-	public String getRb() {
-		return rb;
+	public String[] getProduct() {
+		return product;
 	}
 
-	public void setRb(String rb) {
-		this.rb = rb;
-	}
-
-	public String getSme() {
-		return sme;
-	}
-
-	public void setSme(String sme) {
-		this.sme = sme;
+	public void setProduct(String[] product) {
+		this.product = product;
 	}
 
 	public String getName() {
@@ -132,6 +128,16 @@ public class ProspectDetails {
 
 	public void setCemTeam(String cemTeam) {
 		this.cemTeam = cemTeam;
+	}
+
+
+
+	@Override
+	public String toString() {
+		return "ProspectDetails [name=" + name + ", region=" + region + ", bsgContact=" + bsgContact + ", pdmContact="
+				+ pdmContact + ", tfocusID=" + tfocusID + ", cemTeam=" + cemTeam + ", channel="
+				+ Arrays.toString(channel) + ", languageLTR=" + languageLTR + ", languageRTL=" + languageRTL
+				+ ", transact=" + transact + ", product=" + Arrays.toString(product) + "]";
 	}
 
 }

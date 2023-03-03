@@ -61,27 +61,43 @@
 
 							<div th:remove="tag" th:each="moduleslist:${modules}"
 								th:with="articleCount=${moduleslist.submodule.size()}">
+								<div th:if="${articleCount>0}">
 								<tr>
-									<td th:rowspan="${moduleslist.submodule.size()}" class="td1"><input
+									<td th:rowspan="${moduleslist.submodule.size()+1}" class="td1"><input
 										type="checkbox" name="assum" class="checkBoxClass"
 										value="@{moduleslist.moduleId}"></td>
 									<td th:text="${moduleslist.moduleId}"
-										th:rowspan="${moduleslist.submodule.size()}" class="td2"></td>
+										th:rowspan="${moduleslist.submodule.size()+1}" class="td2"></td>
 									<td th:text="${moduleslist.moduleName}"
-										th:rowspan="${moduleslist.submodule.size()}" class="td3"></td>
-									<td
+										th:rowspan="${moduleslist.submodule.size()+1}" class="td3"></td>
+									<!-- <td
 										th:text="${articleCount>0}?${moduleslist.submodule[0].submoduleName}:''"
 										class="td4"></td>
-									<!-- <td th:if="${articleCount==0}" th:text="--"> -->
+									<td th:if="${articleCount==0}" th:text="--">
 									<td
 										th:text="${articleCount>0}?${moduleslist.submodule[0].productMapping}:''"
-										class="td5"></td>
+										class="td5"></td> -->
 									<!-- <td th:if="${articleCount==0}" th:text="--"> -->
 								</tr>
 								<tr th:each="article,stats:${moduleslist.submodule}">
+								
 									<td th:text="${article.submoduleName}"></td>
 									<td th:text="${article.productMapping}"></td>
 								</tr>
+								</div>
+								
+								 <div th:if="${articleCount==0}">
+								<tr> 
+								<td class="td1"><input
+										type="checkbox" name="assum" class="checkBoxClass" value="@{moduleslist.moduleId}"></td>
+										<td th:text="${moduleslist.moduleId}" class="td2"></td>
+										<td th:text="${moduleslist.moduleName}" class="td3"></td>
+										<td th:text="${moduleslist.moduleName}" class="td3"></td>
+										<td th:text="${moduleslist.moduleName}" class="td3"></td>
+										
+								</tr>
+								</div> 
+								
 							</div>
 
 

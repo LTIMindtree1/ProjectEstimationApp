@@ -42,7 +42,7 @@ public class EstimationController {
 		return "home";
 	}
 
-	@RequestMapping("/estimation")
+	@RequestMapping("/getEstimation")
 	public String estimation() {
 
 		return "estimation";
@@ -62,10 +62,13 @@ public String getAssumptionList(Model model) {
 }
 
 @GetMapping("/getModules")
-public String getModule(Model model) {
+public String getModule(@ModelAttribute("pros") ProspectDetails prospect ,Model model) {
 	List<ModuleList> modules = moduleDBService.getModule();
 	model.addAttribute("modules",modules);
 	System.out.println(modules);
+	System.out.println(prospect.toString());
+	
+	
 	return "moduleList";
 }
 	

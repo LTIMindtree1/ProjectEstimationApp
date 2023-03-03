@@ -32,6 +32,7 @@ public class ModuleDBServiceImpl implements ModuleDBService {
 
     @Override
     public List<ModuleList> getModule() {
+    	
         return repository.findAll();
     }
 
