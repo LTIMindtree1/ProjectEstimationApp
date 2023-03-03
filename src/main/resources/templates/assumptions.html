@@ -57,14 +57,14 @@
 							</tr>
 						</thead>
 						<tbody>
-							<tr th:each="assumptionTable:${assum}">
+							<tr th:each="assumptionTable:${assumptionList}">
 								<td><input type="checkbox" name="assum"
-									class="checkBoxClass" value="@{assumptionTable.id}"></td>
-								<td th:text="${assumptionTable.id}"></td>
+									class="checkBoxClass" value="@{assumptionTable.assumptionsId}"></td>
+								<td th:text="${assumptionTable.assumptionsId}"></td>
 
-								<td th:text="${assumptionTable.category}"></td>
-								<td th:text="${assumptionTable.assumption}"></td>
-								<td th:text="${assumptionTable.type}"></td>
+								<td th:text="${assumptionTable.assumptionsCategory}"></td>
+								<td th:text="${assumptionTable.assumptionsName}"></td>
+								<td th:text="${assumptionTable.assumptionsType}"></td>
 
 
 							</tr>

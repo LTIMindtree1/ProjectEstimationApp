@@ -55,14 +55,16 @@
 							<th class="td5">Question Type</th>
 						</tr>
 </thead>
+
+
 <tbody>
- <tr th:each="question:${questionLists}">
-  <td ><input type="checkbox" name="question" class="checkBoxClass" value="@{question.questionId}"></td>
- <td th:text="${question.questionId}"></td>
-        
-        <td th:text="${question.questionCategory}"></td>
-        <td th:text="${question.questionName}"></td>
-        <td th:text="${question.questionType}"></td>
+ <tr th:each="questionValue:${list}">
+   <td ><input type="checkbox" name="question" class="checkBoxClass" value="@{questionValue.questionId}"></td>
+ <td th:text="${questionValue.questionId}"></td>  
+       
+        <td th:text="${questionValue.questionCategory}"></td>
+        <td th:text="${questionValue.questionName}"></td>
+        <td th:text="${questionValue.questionType}"></td>
         
         
   </tr> 

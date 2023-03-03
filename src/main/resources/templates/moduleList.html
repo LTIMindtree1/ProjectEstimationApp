@@ -1,11 +1,11 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
-<link rel="stylesheet" th:href="@{css/style.css}">
+<link rel="stylesheet" th:href="@{css/assumption.css}">
 <script type="text/javascript"
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <!-- <script type="text/javascript" src="js/jquery-3.4.1.min.js"></script> -->
-<script th:src="@{js/estimation.js}"></script>
+<script th:src="@{js/assumption.js}"></script>
 </head>
 <body class="closed-menu">
 
@@ -43,41 +43,63 @@
 		<div class="content">
 			<form id="idForm">
 				<div id="idParentDiv">
-					<div id="idProspectDiv">
-					
-					<table style="width:80%" border="1"
-           class = "table table-striped table-responsive-md">
-    <thead>
-  <tr>
-  <th class="td1">Selection<input type="checkbox" id="idSelectAll"/></th>
-    <th class="td2">Module</th>
-    <th class="td3">Sub Module</th>
-  </tr>
-  </thead>
-  <tbody>
-  <!-- <tr th:each="employee:${allemplist}">
-        <td th:text="${employee.name}"></td>
-        <td th:text="${employee.email}"></td>
-        <td> <a th:href="@{/showFormForUpdate/{id}(id=${employee.id})}"
-                class="btn btn-primary">Update</a>
-                <a th:href="@{/deleteEmployee/{id}(id=${employee.id})}"
-                class="btn btn-danger">Delete</a>
-    </td>
-  </tr> -->
-  <h1 th:text="${prosepect.name}"></h1>
-  <tr th:each="employee:${prosepect}">
-  <td></td>
-  </tr>
-  </tbody>
-</table>
-					</div>
-				
+
+					<table id="idAssumption">
+						<thead>
+							<tr>
+								<th class="td1">Select All<br> <input type="checkbox"
+									id="idSelectAll" />
+								</th>
+								<th class="td2">Sr. No.</th>
+								<th class="td3">Module</th>
+								<th class="td4">Sub Module</th>
+								<th class="td5">Product Mapping</th>
+							</tr>
+						</thead>
+						<tbody>
+
+
+							<div th:remove="tag" th:each="moduleslist:${modules}"
+								th:with="articleCount=${moduleslist.submodule.size()}">
+								<tr>
+									<td th:rowspan="${moduleslist.submodule.size()}" class="td1"><input
+										type="checkbox" name="assum" class="checkBoxClass"
+										value="@{moduleslist.moduleId}"></td>
+									<td th:text="${moduleslist.moduleId}"
+										th:rowspan="${moduleslist.submodule.size()}" class="td2"></td>
+									<td th:text="${moduleslist.moduleName}"
+										th:rowspan="${moduleslist.submodule.size()}" class="td3"></td>
+									<td
+										th:text="${articleCount>0}?${moduleslist.submodule[0].submoduleName}:''"
+										class="td4"></td>
+									<!-- <td th:if="${articleCount==0}" th:text="--"> -->
+									<td
+										th:text="${articleCount>0}?${moduleslist.submodule[0].productMapping}:''"
+										class="td5"></td>
+									<!-- <td th:if="${articleCount==0}" th:text="--"> -->
+								</tr>
+								<tr th:each="article,stats:${moduleslist.submodule}">
+									<td th:text="${article.submoduleName}"></td>
+									<td th:text="${article.productMapping}"></td>
+								</tr>
+							</div>
+
+
+
+
+
+
+						</tbody>
+					</table>
+
+
+
+				</div>
+				<div style="text-align: center; margin-top: 35px;">
+					<button class="button" id="idExport" name="export">Export</button>
+				</div>
+			</form>
 		</div>
-		<div style="text-align: center; margin-top: 65px;">
-			<button class="button" id="idNext" name="next">Next</button>
-		</div>
-		</form>
-	</div>
 	</div>
 
 </body>
