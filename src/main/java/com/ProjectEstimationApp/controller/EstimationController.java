@@ -1,18 +1,20 @@
 package com.ProjectEstimationApp.controller;
 
 import com.ProjectEstimationApp.entity.*;
-import com.ProjectEstimationApp.model.QuestionListResponse;
+import com.ProjectEstimationApp.model.EstimationRequest;
+import com.ProjectEstimationApp.model.ModuleListResponse;
+import com.ProjectEstimationApp.model.Response;
 import com.ProjectEstimationApp.repository.ModuleRepository;
-import com.ProjectEstimationApp.repository.QuestionRepository;
 import com.ProjectEstimationApp.repository.SubModuleRepository;
 import com.ProjectEstimationApp.service.ModuleDBService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 @RestController
 public class EstimationController {
@@ -29,7 +31,6 @@ public class EstimationController {
 		List<ModuleList> li=moduleDBService.getModule();
 		return ResponseEntity.ok(li);
 	}
-
 	@GetMapping("/getSubModule")
 	public ResponseEntity<List<SubModuleList>> getSubModule(){
 		List<SubModuleList> li=subModuleRepository.findAll();
@@ -49,6 +50,11 @@ public class EstimationController {
 	public ResponseEntity<List<RiskList>> getRiskList(){
 		List<RiskList> riskList = moduleDBService.getRisk();
 		return ResponseEntity.ok(riskList);
+	}
+	@PostMapping("/getmoduleList")
+	public ResponseEntity<List<Response>> getModuleList(@RequestBody EstimationRequest estimationRequest){
+		List<Response> moduleListResponses = moduleDBService.getModuleList(estimationRequest);
+		return ResponseEntity.ok(moduleListResponses);
 	}
 
 }

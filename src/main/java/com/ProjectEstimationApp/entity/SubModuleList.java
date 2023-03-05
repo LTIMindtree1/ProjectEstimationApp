@@ -15,9 +15,10 @@ import javax.persistence.*;
 @Table(name = "submodulelist")
 public class SubModuleList {
     @Id
-    @GeneratedValue
     private Long submoduleId;
-    private Long moduleId;
     private String submoduleName;
     private String productMapping;
+    private String channel;
+
+
 }
