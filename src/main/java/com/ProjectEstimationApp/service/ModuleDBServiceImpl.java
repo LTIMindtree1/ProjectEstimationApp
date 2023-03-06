@@ -52,68 +52,36 @@ public class ModuleDBServiceImpl implements ModuleDBService {
     public List<RiskList> getRisk() {
         return riskRepository.findAll();
     }
-    public String product;
     @Override
     public List<Response> getModuleList(EstimationRequest estimationRequest) {
 
         String product = getProductSelected(estimationRequest.getProductSelected());
         String channel = getSelectedChannel(estimationRequest.getChannels());
 
-        String ProspectDetailsSaved = saveProspectDetails(estimationRequest.getProspectDetails());
-        log.debug(ProspectDetailsSaved);
+        prospectDetailsRepository.save(estimationRequest.getProspectDetails());
+        log.debug("Prospect Details Saved Inside DataBase");
 
         List<ModuleList> moduleList = repository.findAll();
-        List<ModuleListResponse> ModuleList = new ArrayList<>();
-
-        for (ModuleList mod : moduleList) {
-            ModuleListResponse moduleListResponse = new ModuleListResponse();
-            moduleListResponse.setModuleName(mod.getModuleName());
-            moduleListResponse.setSubModuleLists(mod.getSubmodule());
-            moduleListResponse.setModuleId(mod.getModuleId());
-            ModuleList.add(moduleListResponse);
-        }
-
         List<Response> response = new ArrayList<>();
 
-        for (ModuleListResponse m : ModuleList){
+        for (ModuleList m : moduleList){
             Response response1 = new Response();
             response1.setModuleId(m.getModuleId());
             response1.setModuleName(m.getModuleName());
             List<String> submodule = new ArrayList<>();
 
-            for (int i =0; i< m.getSubModuleLists().size(); i++){
-                SubModuleList subModuleList1 = m.getSubModuleLists().get(i);
 
-                if(product.equalsIgnoreCase("RB+SME") && channel.equalsIgnoreCase("M,RW")){
-                    if(subModuleList1.getProductMapping().contains(product) || product.contains(subModuleList1.getProductMapping())
-                            && subModuleList1.getChannel().contains(channel) || channel.contains(subModuleList1.getChannel())){
-                        submodule.add(subModuleList1.getSubmoduleName());
-                    }
-                }
-                else if(subModuleList1.getProductMapping().contains(product)
-                                && subModuleList1.getChannel().contains(channel)){
-                    submodule.add(subModuleList1.getSubmoduleName());
-                }
+            for(SubModuleList subModuleList1 : m.getSubmodule()){
+               if(IsTrue(product,subModuleList1.getProductMapping()) &&
+                  IsTrue(channel,subModuleList1.getChannel())) {
+
+                   submodule.add(subModuleList1.getSubmoduleName());
+               }
             }
             response1.setSubModules(submodule);
             response.add(response1);
         }
         return response;
-    }
-
-    private String saveProspectDetails(ProspectDetails prospectDetails) {
-
-        ProspectDetailsEntity prospectDetailsEntity = new ProspectDetailsEntity();
-        prospectDetailsEntity.setName(prospectDetails.getName());
-        prospectDetailsEntity.setBSGContact(prospectDetails.getBSGContact());
-        prospectDetailsEntity.setPDMContact(prospectDetails.getPDMContact());
-        prospectDetailsEntity.setRegion(prospectDetails.getRegion());
-        prospectDetailsEntity.setTfocusId(prospectDetails.getCEMTeam());
-        prospectDetailsEntity.setCEMTeam(prospectDetails.getCEMTeam());
-
-        prospectDetailsRepository.save(prospectDetailsEntity);
-
-        return "Prospect Details Saved Inside DataBase";
     }
 
     private String getProductSelected(ProductSelected productSelected) {
@@ -130,6 +98,14 @@ public class ModuleDBServiceImpl implements ModuleDBService {
         return product;
     }
 
+    boolean IsTrue(String UserInput, String DBInput){
+        if(DBInput.length() >= UserInput.length()){
+            return DBInput.contains(UserInput);
+        }else{
+            return UserInput.contains(DBInput);
+        }
+    }
+
     private String getSelectedChannel(Channels channels) {
         String channel = null;
         if(channels.isMobile() && channels.isResponsiveWeb()){
@@ -142,6 +118,4 @@ public class ModuleDBServiceImpl implements ModuleDBService {
             channel = null;
         return channel;
     }
-
-
 }

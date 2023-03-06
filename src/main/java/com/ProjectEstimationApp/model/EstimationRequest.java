@@ -1,16 +1,18 @@
 package com.ProjectEstimationApp.model;
 
+import com.ProjectEstimationApp.entity.ProspectDetailsEntity;
+
 public class EstimationRequest {
-    public ProspectDetails prospectDetails;
+    public ProspectDetailsEntity prospectDetails;
     public Channels channels;
     public Languages languages;
     public ProductSelected productSelected;
 
-    public ProspectDetails getProspectDetails() {
+    public ProspectDetailsEntity getProspectDetails() {
         return prospectDetails;
     }
 
-    public void setProspectDetails(ProspectDetails prospectDetails) {
+    public void setProspectDetails(ProspectDetailsEntity prospectDetails) {
         this.prospectDetails = prospectDetails;
     }
 

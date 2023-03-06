@@ -1,6 +1,6 @@
 #Default Port
 server:
-  port: 8083
+  port: 8084
 
 spring:
   mvc:
@@ -14,7 +14,7 @@ spring:
   datasource:
     url: jdbc:mysql://localhost:3306/estimation
     username: root
-    password: root
+    password: Sus@281996
     driver-class-name: com.mysql.cj.jdbc.Driver
 
 

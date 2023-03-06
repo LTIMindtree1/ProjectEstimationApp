@@ -7,8 +7,6 @@ public class Response {
     private String ModuleName;
     private List<String> subModules;
 
-    
-    
     public long getModuleId() {
 		return ModuleId;
 	}
@@ -36,7 +34,8 @@ public class Response {
     @Override
     public String toString() {
         return "Response{" +
-                "ModuleName='" + ModuleName + '\'' +
+                "ModuleId=" + ModuleId +
+                ", ModuleName='" + ModuleName + '\'' +
                 ", subModules=" + subModules +
                 '}';
     }

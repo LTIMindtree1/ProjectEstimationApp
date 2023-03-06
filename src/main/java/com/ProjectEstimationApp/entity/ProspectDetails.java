@@ -2,7 +2,7 @@ package com.ProjectEstimationApp.entity;
 
 import java.util.Arrays;
 
-public class Prospectde {
+public class ProspectDetails {
 
 	private String name;
 	private String region;
@@ -10,23 +10,22 @@ public class Prospectde {
 	private String pdmContact;
 	private String tfocusID;
 	private String cemTeam;
-
-	private String[] channel;
 	private String languageLTR;
 	private String languageRTL;
 	private String transact;
-	
+
+	private String[] channel;
 	private String[] product;
 
-	public Prospectde() {
+	public ProspectDetails() {
 		super();
 	}
 
 	
 
-	public Prospectde(String name, String region, String bsgContact, String pdmContact, String tfocusID,
-			String cemTeam, String[] channel, String languageLTR, String languageRTL, String transact,
-			String[] product) {
+	public ProspectDetails(String name, String region, String bsgContact, String pdmContact, String tfocusID,
+						   String cemTeam, String[] channel, String languageLTR, String languageRTL, String transact,
+						   String[] product) {
 		super();
 		this.name = name;
 		this.region = region;

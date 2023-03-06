@@ -2,6 +2,7 @@ package com.ProjectEstimationApp.controller;
 
 import java.util.List;
 
+import com.ProjectEstimationApp.entity.ProspectDetailsEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -11,18 +12,17 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.ProjectEstimationApp.entity.AssumptionList;
-import com.ProjectEstimationApp.entity.Prospectde;
+import com.ProjectEstimationApp.entity.ProspectDetails;
 import com.ProjectEstimationApp.entity.QuestionList;
 import com.ProjectEstimationApp.model.Channels;
 import com.ProjectEstimationApp.model.EstimationRequest;
 import com.ProjectEstimationApp.model.Languages;
 import com.ProjectEstimationApp.model.ProductSelected;
-import com.ProjectEstimationApp.model.ProspectDetails;
 import com.ProjectEstimationApp.model.Response;
 import com.ProjectEstimationApp.service.ModuleDBService;
 
 @Controller
-public class EstimationControllerui {
+public class EstimationControllerWEB {
 	@Autowired
 	EstimationController controller;
 	
@@ -58,9 +58,9 @@ public class EstimationControllerui {
 	}
 
 	@PostMapping("/getmoduleList")
-	public String getModuleList(@ModelAttribute ("prospect") Prospectde prospect, Model model) {
+	public String getModuleList(@ModelAttribute ("prospect") ProspectDetails prospect, Model model) {
 		
-	ProspectDetails pros=new ProspectDetails();
+	ProspectDetailsEntity pros=new ProspectDetailsEntity();
 	System.out.println(prospect);
 	pros.setName(prospect.getName());
 	pros.setRegion(prospect.getRegion());
@@ -91,16 +91,12 @@ public class EstimationControllerui {
 			Tablet=true;
 		if(prospect.getChannel()[i].equalsIgnoreCase("responsiveweb"))
 			ResponsiveWeb=true;
-		
-			
+
 	}
 	channel.setMobile(Mobile);
 	channel.setTablet(Tablet);
 	channel.setResponsiveWeb(ResponsiveWeb);
-		
-		
-	
-	
+
 	//products
 	ProductSelected prod=new ProductSelected();
 	boolean RetailBanking=false, SMEBanking=false;
