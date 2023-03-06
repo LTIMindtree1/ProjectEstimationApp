@@ -7,10 +7,20 @@ import java.util.List;
 import java.util.Map;
 
 public class ModuleListResponse {
+	private long ModuleId;
     public String ModuleName;
     public List<SubModuleList> subModuleLists;
 
-    public String getModuleName() {
+    
+    public long getModuleId() {
+		return ModuleId;
+	}
+
+	public void setModuleId(long moduleId) {
+		ModuleId = moduleId;
+	}
+
+	public String getModuleName() {
         return ModuleName;
     }
 

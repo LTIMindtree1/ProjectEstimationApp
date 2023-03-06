@@ -114,7 +114,7 @@ nav li#user-info > span:after{
 }
 .tableCaption{
     border-radius: 4px;
-    background: #379ece; /*  rgb(23 157 179 / 95%); */
+    background: #000330; /*  rgb(23 157 179 / 95%); */
     width: 167px;
 }
 td > p{
@@ -148,32 +148,83 @@ td > p{
 .queries ul{
 display: none;
 }
-.queries::-webkit-scrollbar-thumb { background: rgb(35 162 183); }
 
-.queries {
-	border-style: solid;
-	border-width: 1px 0;
-	border-color: #23a2b700;
-}
-#idParentDiv{
-	display: flex;
-    height: 270px;
-     width:100%;
-}
-#idProspectDiv, #idSmallDiv {
-    width:46%;
+/************************************ moduleList.html ************************************/
+
+#idAssumption {
+  font-family: Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
 }
 
-#idParentDiv table{
-    border: 1px solid #000;
-    width:100%;
+#idAssumption td, #customers th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+#idAssumption tr:nth-child(even){background-color: #f2f2f2;}
+
+#idAssumption tr:hover {background-color: #ddd;}
+
+#idAssumption th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #379ece; /* #04AA6D; */
+  color: white;
+}
+
+#idParentDiv::-webkit-scrollbar { 
+	width: 8px;
     height: 100%;
+    background-color: #ddd;
 }
 
-input[type="text" ] {
-    width:	98%;
+#idParentDiv::-webkit-scrollbar-thumb { background: rgb(35 162 183); }
+
+#idParentDiv {
+	height: 63%;
+    overflow-y: scroll;
+    border-bottom: 1px solid #ddd;
 }
-#idSmallDiv table{
-	height: 46.5%;
-    width: 100%;
+
+.td1{
+	width: 6%;
 }
+.td2{
+	width: 6%;
+}
+.td3{
+	width: 6%;
+}
+.td4{
+	width: 62%;
+}
+.td5{
+	width: 20%;
+}
+
+#idAssumption th{
+	position: sticky;
+    top: 0;
+    text-align: center;
+}
+
+tr > td:first-child {
+    text-align: center;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -69,6 +69,7 @@ public class ModuleDBServiceImpl implements ModuleDBService {
             ModuleListResponse moduleListResponse = new ModuleListResponse();
             moduleListResponse.setModuleName(mod.getModuleName());
             moduleListResponse.setSubModuleLists(mod.getSubmodule());
+            moduleListResponse.setModuleId(mod.getModuleId());
             ModuleList.add(moduleListResponse);
         }
 
@@ -76,6 +77,7 @@ public class ModuleDBServiceImpl implements ModuleDBService {
 
         for (ModuleListResponse m : ModuleList){
             Response response1 = new Response();
+            response1.setModuleId(m.getModuleId());
             response1.setModuleName(m.getModuleName());
             List<String> submodule = new ArrayList<>();
 

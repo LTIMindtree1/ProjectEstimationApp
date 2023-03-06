@@ -1,0 +1,200 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head >
+<meta charset="UTF-8">
+	<link rel="stylesheet" th:href="@{css/style.css}">
+	 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> 
+	<!-- <script type="text/javascript" src="js/jquery-3.4.1.min.js"></script> -->
+	<script th:src="@{js/estimation.js}"></script>
+</head>
+<body class="closed-menu">
+
+	<nav class="vertical-menu-wrapper">
+		<div class="vertical-menu-logo">
+			<div id="idCompName" style="visibility: hidden; color: #379ece;">LTIMindtree</div>
+			<span class="open-menu-btn">
+				<hr id="burger1"/>
+				<hr id="burger2"/>
+				<hr id="burger3"/>
+			</span>
+		</div>
+		<ul class="vertical-menu">
+			<li><a href="/home">Home</a></li>
+			<li><a href="/getEstimation">Estimation</a></li>
+			<li><a href="/getQuestion">RFP Questions</a></li>
+			<li><a href="/getAssumption">RFP Assumptions</a></li>
+			<li><a href="/getRisk">Risk</a></li>
+		</ul>
+			<button id="idBtnQueries" name="btnQueries">Ask Queries</button>
+		<ul class="vertical-menu">
+			<li id="user-info">LTIMindtree<span>LTI</span></li>
+		</ul>
+	</nav>
+
+	<div class="content-wrapper">
+		<div class="contentH">
+
+			<div class="topBar">
+				<img class="logo" src="images/LTI_Logo.png">
+				<p class="topBar-Text">Project Estimation</p>
+			</div>
+
+		</div>
+		<div class="content">
+			<form id="idForm"  th:action="@{/getmoduleList}"  method="POST">
+				<div id="idParentDiv">
+					<div id="idProspectDiv">
+						<table id="idTableProspect">
+							<!-- <caption>Prospect Details</caption> -->
+							<tr>
+								<td class="tableCaption" colspan="2">
+		        					<p align="center">Prospect Details</p></td>
+							</tr>
+							<tr>
+								<td>Name</td>
+								<td><input type="text" id="idName" name="name"></td>
+							</tr>
+							<tr>
+								<td>Region</td>
+								<td><input type="text" id="idRegion" name="region"></td>
+							</tr>
+							<tr>
+								<td>BSG Contact</td>
+								<td><input type="text" id="idBsgContact"   name="bsgContact"></td>
+							</tr>
+							<tr>
+								<td>PDM contact</td>
+								<td><input type="text" name="pdmContact"></td>
+							</tr>
+							<tr>
+								<td>Tfocus ID</td>
+								<td><input type="text" name="tfocusID"></td>
+							</tr>
+							<tr>
+								<td>CEM Team(Manager,TFT)</td>
+								<td><input type="text" name="cemTeam"></td>
+							</tr>
+						</table>
+					</div>	
+					&nbsp;&nbsp;&nbsp;
+					
+					<!-- </div> -->
+					<br><br>
+					<div id="idSmallDiv" style="display: flex;">
+						<div>
+							<table id="idTableChannel">
+								<!-- <caption>Channel</caption> -->
+								<tr>
+									<td class="tableCaption" colspan="2">
+			        					<p align="center">Channel</p></td>
+								</tr>
+								<tr>
+									<td>Mobile</td>
+									<td><input type="checkbox" id="idMobile" name="channel" value="mobile"></td>
+								</tr>
+								<tr>
+									<td>Tablet</td>
+									<td><input type="checkbox" id="idTablet" name="channel" value="tablet"></td>
+								</tr>
+								<tr>
+									<td>Responsive Web</td>
+									<td><input type="checkbox" id="idWeb" name="channel" value="responsiveweb"></td>
+								</tr>
+							</table>
+							&nbsp;&nbsp;&nbsp;
+							<table id="idTableLanguage">
+								<!-- <caption>Channel</caption> -->
+								<tr>
+									<td class="tableCaption" colspan="2">
+			        					<p align="center">Language</p></td>
+								</tr>
+								<tr>
+									<td>LTR</td>
+									<td>
+										<select name="languageLTR" id="idLanguageLTR">
+										  <option value="1">1</option>
+										  <option value="2">2</option>
+										  <option value="3">3</option>
+										  <option value="4">4</option>
+										  <option value="5">5</option>
+										  <option value="6">6</option>
+										  <option value="7">7</option>
+										  <option value="8">8</option>
+										  <option value="9">9</option>
+										  <option value="10">10</option>
+										</select>
+									</td>
+								</tr>
+								<tr>
+									<td>&nbsp;</td>
+								</tr>
+								<tr>
+									<td>RTL</td>
+									<td>
+										<select name="languageRTL" id="idLanguageRTL">
+										  <option value="1">1</option>
+										  <option value="2">2</option>
+										  <option value="3">3</option>
+										  <option value="4">4</option>
+										  <option value="5">5</option>
+										  <option value="6">6</option>
+										  <option value="7">7</option>
+										  <option value="8">8</option>
+										  <option value="9">9</option>
+										  <option value="10">10</option>
+										</select>
+									</td>
+								</tr>
+							</table>
+						</div>
+						&nbsp;&nbsp;&nbsp;
+						<div>
+							<table id="idTableFeatures">
+								<!-- <caption>Channel</caption> -->
+								<tr>
+									<td class="tableCaption" colspan="2">
+			        					<p align="center">Features</p></td>
+								</tr>
+								<tr>
+									<td>Is Transact the backend?</td>
+									<td><input type="checkbox" id="idFeatureTransact" name="transact" value="yes"></td>
+								</tr>
+								<tr>
+									<td>&nbsp;</td>
+								</tr>
+								<tr>
+									<td>&nbsp;</td>
+								</tr>
+							</table>
+							
+							&nbsp;&nbsp;&nbsp;
+							
+							<table id="idTableProduct">
+							<!-- <caption>Channel</caption> -->
+							<tr>
+								<td class="tableCaption" colspan="2">
+		        					<p align="center">Product Selection</p></td>
+							</tr>
+							<tr>
+								<td>RB</td>
+								<td><input type="checkbox" id="idProductRB" name="product" value="rb"></td>
+							</tr>
+							<tr>
+								<td>&nbsp;</td>
+							</tr>
+							<tr>
+								<td>SME</td>
+								<td><input type="checkbox" id="idProductSME" name="product" value="sme"></td>
+							</tr>
+						</table>
+						</div>
+					</div>
+				</div>
+				<div style="text-align: center; margin-top: 65px;">
+					<button class="button" id="idNext" name="next">Next</button>
+				</div>
+			</form>
+		</div>
+	</div>
+
+</body>
+</html>

@@ -3,10 +3,21 @@ package com.ProjectEstimationApp.model;
 import java.util.List;
 
 public class Response {
+	private long ModuleId;
     private String ModuleName;
     private List<String> subModules;
 
-    public String getModuleName() {
+    
+    
+    public long getModuleId() {
+		return ModuleId;
+	}
+
+	public void setModuleId(long moduleId) {
+		ModuleId = moduleId;
+	}
+
+	public String getModuleName() {
         return ModuleName;
     }
 

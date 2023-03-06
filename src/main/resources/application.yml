@@ -10,11 +10,11 @@ spring:
   jpa:
     show-sql: true
     hibernate:
-      ddl-auto: update
+      ddl-auto: none
   datasource:
     url: jdbc:mysql://localhost:3306/estimation
     username: root
-    password: Sus@281996
+    password: root
     driver-class-name: com.mysql.cj.jdbc.Driver
 
 

@@ -36,12 +36,12 @@ public class EstimationController {
 		List<SubModuleList> li=subModuleRepository.findAll();
 		return ResponseEntity.ok(li);
 	}
-	@GetMapping("/getQuestion")
+	
 	public ResponseEntity<List<QuestionList>> getQuestion(){
 		List<QuestionList> questionLists = moduleDBService.getQuestion();
 		return ResponseEntity.ok(questionLists);
 	}
-	@GetMapping("/getAssumption")
+	
 	public ResponseEntity<List<AssumptionList>> getAssumptionList(){
 		List<AssumptionList> assumptionList = moduleDBService.getAssumptionList();
 		return ResponseEntity.ok(assumptionList);
@@ -51,7 +51,7 @@ public class EstimationController {
 		List<RiskList> riskList = moduleDBService.getRisk();
 		return ResponseEntity.ok(riskList);
 	}
-	@PostMapping("/getmoduleList")
+	
 	public ResponseEntity<List<Response>> getModuleList(@RequestBody EstimationRequest estimationRequest){
 		List<Response> moduleListResponses = moduleDBService.getModuleList(estimationRequest);
 		return ResponseEntity.ok(moduleListResponses);
