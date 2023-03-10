@@ -2,8 +2,10 @@ package com.ProjectEstimationApp.controller;
 
 import java.util.List;
 
-import com.ProjectEstimationApp.entity.ProspectDetailsEntity;
+import com.ProjectEstimationApp.entity.*;
+import com.ProjectEstimationApp.model.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -11,14 +13,6 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.ProjectEstimationApp.entity.AssumptionList;
-import com.ProjectEstimationApp.entity.ProspectDetails;
-import com.ProjectEstimationApp.entity.QuestionList;
-import com.ProjectEstimationApp.model.Channels;
-import com.ProjectEstimationApp.model.EstimationRequest;
-import com.ProjectEstimationApp.model.Languages;
-import com.ProjectEstimationApp.model.ProductSelected;
-import com.ProjectEstimationApp.model.Response;
 import com.ProjectEstimationApp.service.ModuleDBService;
 
 @Controller
@@ -43,7 +37,7 @@ public class EstimationControllerWEB {
 	
 	@GetMapping("/getQuestion")
 	public String getAllQuestion(Model model) {
-	List<QuestionList> list = moduleDBService.getQuestion();
+		List<QuestionList> list = moduleDBService.getQuestion();
 		model.addAttribute("list",list);
 		return "questions";
 		
@@ -55,6 +49,23 @@ public class EstimationControllerWEB {
 		model.addAttribute("assumptionList",assumptionList);
 		System.out.println(assumptionList);
 		return "assumptions";
+	}
+
+	@GetMapping("/getRisk")
+	public String getRiskList(Model model){
+		List<RiskList> riskList = moduleDBService.getRisk();
+		System.out.println(riskList);
+		model.addAttribute("riskList",riskList);
+		return "risk";
+	}
+
+	// 03092023 : New menu 'Module List'
+	@GetMapping("/getList")
+	public String getList(Model model){
+//		List<RiskList> riskList = moduleDBService.getRisk();
+//		System.out.println(riskList);
+//		model.addAttribute("riskList",riskList);
+		return "moduleList";
 	}
 
 	@PostMapping("/getmoduleList")
@@ -116,9 +127,9 @@ public class EstimationControllerWEB {
 		estimationRequest.setChannels(channel);
 		estimationRequest.setLanguages(language);
 		estimationRequest.setProductSelected(prod);
-		List<Response> moduleListResponses = moduleDBService.getModuleList(estimationRequest);
-		System.out.println(moduleListResponses);
-		model.addAttribute("modules",moduleListResponses);
+		ProspectModuleResponse objProspectModuleResponse = moduleDBService.getModuleList(estimationRequest);
+		System.out.println(objProspectModuleResponse);
+		model.addAttribute("modules",objProspectModuleResponse);
 		
 		return "ModuleList";
 	}

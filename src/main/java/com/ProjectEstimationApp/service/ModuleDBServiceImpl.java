@@ -53,7 +53,13 @@ public class ModuleDBServiceImpl implements ModuleDBService {
         return riskRepository.findAll();
     }
     @Override
-    public List<Response> getModuleList(EstimationRequest estimationRequest) {
+    public ProspectModuleResponse getModuleList(EstimationRequest estimationRequest) {
+
+        // Master response -> Prospect Details and list of Response
+        ProspectModuleResponse objProspectModuleResponse = new ProspectModuleResponse();
+
+        // Set ProspectDetails to master object
+        objProspectModuleResponse.setObjEstimationRequest(estimationRequest);
 
         String product = getProductSelected(estimationRequest.getProductSelected());
         String channel = getSelectedChannel(estimationRequest.getChannels());
@@ -66,22 +72,35 @@ public class ModuleDBServiceImpl implements ModuleDBService {
 
         for (ModuleList m : moduleList){
             Response response1 = new Response();
-            response1.setModuleId(m.getModuleId());
-            response1.setModuleName(m.getModuleName());
-            List<String> submodule = new ArrayList<>();
+            List<SubModuleList> submodule = new ArrayList<>();
 
 
             for(SubModuleList subModuleList1 : m.getSubmodule()){
+
+               SubModuleList subModuleList = new SubModuleList();
+
                if(IsTrue(product,subModuleList1.getProductMapping()) &&
                   IsTrue(channel,subModuleList1.getChannel())) {
 
-                   submodule.add(subModuleList1.getSubmoduleName());
+                   subModuleList.setSubmoduleName(subModuleList1.getSubmoduleName());
+                   subModuleList.setChannel(subModuleList1.getChannel());
+                   subModuleList.setProductMapping(subModuleList1.getProductMapping());
+
+                   submodule.add(subModuleList);
                }
             }
-            response1.setSubModules(submodule);
-            response.add(response1);
+            if(submodule.size()>0){
+                response1.setModuleId(m.getModuleId());
+                response1.setModuleName(m.getModuleName());
+                response1.setSubModules(submodule);
+                response.add(response1);
+            }
+
         }
-        return response;
+        // Adding final list of Response
+        objProspectModuleResponse.setObjlstResponse(response);
+
+        return objProspectModuleResponse;
     }
 
     private String getProductSelected(ProductSelected productSelected) {

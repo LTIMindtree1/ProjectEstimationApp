@@ -16,7 +16,7 @@ import javax.persistence.Table;
 @Table(name = "questionlist")
 public class QuestionList {
     @Id
-    private Long questionId;
+    private String questionId;
     private String questionCategory;
     private String questionName;
     private String questionType;

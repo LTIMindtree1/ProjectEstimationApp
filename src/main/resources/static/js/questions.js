@@ -20,21 +20,20 @@ $(document).ready(function(){
 		   $('#burger2').css("display", "block");
 	   	   $('#burger1').css({"transform":"rotate(0deg)", "margin-top":"0px"});
 	   	   $('#burger3').css({"transform":"rotate(0deg)", "margin-top":"0px"});
-		   
 		}
      });
 
 
-$('#idSelectAll').on('click',function(){
-        if(this.checked){
-            $('.checkBoxClass').each(function(){
-                this.checked = true;
-            });
-        }else{
-             $('.checkBoxClass').each(function(){
-                this.checked = false;
-            });
-        }
+    $('#idSelectAll').on('click',function(){
+            if(this.checked){
+                $('.checkBoxClass').each(function(){
+                    this.checked = true;
+                });
+            }else{
+                 $('.checkBoxClass').each(function(){
+                    this.checked = false;
+                });
+            }
     });
     
     $('.checkBoxClass').on('click',function(){
@@ -44,5 +43,7 @@ $('#idSelectAll').on('click',function(){
             $('#idSelectAll').prop('checked',false);
         }
     });
+
+
 
 });

@@ -1,35 +1,34 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-<meta charset="UTF-8">
-<link rel="stylesheet" th:href="@{css/assumption.css}">
-<script type="text/javascript"
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-<!-- <script type="text/javascript" src="js/jquery-3.4.1.min.js"></script> -->
-<script th:src="@{js/assumption.js}"></script>
+	<meta charset="UTF-8">
+	<link rel="stylesheet" th:href="@{css/moduleList.css}">
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<script th:src="@{js/assumption.js}"></script>
 </head>
 <body class="closed-menu">
 
-	<nav class="vertical-menu-wrapper">
-		<div class="vertical-menu-logo">
-			<div id="idCompName" style="visibility: hidden; color: #379ece;">LTIMindtree</div>
-			<span class="open-menu-btn">
+<nav class="vertical-menu-wrapper">
+	<div class="vertical-menu-logo">
+		<div id="idCompName" style="visibility: hidden; color: #379ece;">LTIMindtree</div>
+		<span class="open-menu-btn">
 				<hr id="burger1" />
 				<hr id="burger2" />
 				<hr id="burger3" />
 			</span>
-		</div>
-		<ul class="vertical-menu">
-			<li><a href="/home">Home</a></li>
-			<li><a href="/estimation">Estimation</a></li>
-			<li><a href="/questions">RFP Questions</a></li>
-			<li><a href="/assumptions">RFP Assumptions</a></li>
-			<li><a href="/risk">Risk</a></li>
-		</ul>
-		<button id="idBtnQueries" name="btnQueries">Ask Queries</button>
-		<ul class="vertical-menu">
-			<li id="user-info">LTIMindtree<span>LTI</span></li>
-		</ul>
-	</nav>
+	</div>
+	<ul class="vertical-menu">
+		<li><a href="/home">Home</a></li>
+		<li><a href="/getList">Module List</a></li>
+		<li><a href="/getEstimation">Estimation</a></li>
+		<li><a href="/getQuestion">RFP Questions</a></li>
+		<li><a href="/getAssumption">RFP Assumptions</a></li>
+		<li><a href="/getRisk">Risk</a></li>
+	</ul>
+	<button id="idBtnQueries" name="btnQueries">Ask Queries</button>
+	<ul class="vertical-menu">
+		<li id="user-info">LTIMindtree<span>LTI</span></li>
+	</ul>
+</nav>
 
 	<div class="content-wrapper">
 		<div class="contentH">
@@ -43,59 +42,149 @@
 		<div class="content">
 			<form id="idForm">
 				<div id="idParentDiv">
+					<div id="idUserInput" th:each="userInputs:${modules.objEstimationRequest}">
+						<table>
+							<tr>
+								<th class="thHeader">Prospect Details</th>
+								<th class="thHeader">Language</th>
+								<th class="thHeader">Channel</th>
+								<th class="thHeader">Product</th>
+							</tr>
+							<tr>
+								<td>
+									<table>
+										<tr>
+											<td class="thHeader">Name</td>
+											<td class="thHeader" th:text="${userInputs.prospectDetails.Name}"></td>
+										</tr>
+										<tr>
+											<td class="thHeader">Region</td>
+											<td class="thHeader" th:text="${userInputs.prospectDetails.Region}"></td>
+										</tr>
+										<tr>
+											<td class="thHeader">BSG Contact</td>
+											<td class="thHeader" th:text="${userInputs.prospectDetails.BSGContact}"></td>
+										</tr>
+										<tr>
+											<td class="thHeader">PDM contact</td>
+											<td class="thHeader" th:text="${userInputs.prospectDetails.PDMContact}"></td>
+										</tr>
+									</table>
+								</td>
+								<td>
+									<table>
+										<tr>
+											<td class="thHeader">LTR</td>
+											<td class="thHeader" th:text="${userInputs.languages.LeftToRight}"></td>
+										</tr>
+										<tr>
+											<td class="thHeader">RTL</td>
+											<td class="thHeader" th:text="${userInputs.languages.RightToLeft}"></td>
+										</tr>
+										<tr>
+											<td class="thHeader">Is Transact</td>
+
+											<td class="thHeader" th:text="${userInputs.languages.isTransactBackend} ? 'Yes' :'No' ">
+											</td>
+										</tr>
+										<tr class="trbg">
+											<td >&nbsp;</td> <td >&nbsp;</td>
+										</tr>
+									</table>
+								</td>
+								<td>
+									<table>
+										<tr>
+											<td class="thHeader">Mobile</td>
+											<td class="thHeader" th:text="${userInputs.channels.Mobile} ? 'Yes' :'No' "></td>
+											<!--<td class="thHeader" th:text="${userInputs.channels.Mobile}"></td>-->
+										</tr>
+										<tr>
+											<td class="thHeader">Tablet</td>
+											<td class="thHeader" th:text="${userInputs.channels.Tablet} ? 'Yes' :'No' "></td>
+											<!--<td class="thHeader" th:text="${userInputs.channels.Tablet}"></td>-->
+										</tr>
+										<tr>
+											<td class="thHeader">R. Web</td>
+											<td class="thHeader" th:text="${userInputs.channels.ResponsiveWeb} ? 'Yes' :'No' "></td>
+											<!--<td class="thHeader" th:text="${userInputs.channels.ResponsiveWeb}"></td>-->
+										</tr>
+										<tr class="trbg">
+											<td>&nbsp;</td> <td >&nbsp;</td>
+										</tr>
+									</table>
+								</td>
+								<td>
+									<table>
+										<tr>
+											<td class="thHeader">RB</td>
+											<td class="thHeader" th:text="${userInputs.productSelected.RetailBanking} ? 'Yes' :'No' "></td>
+											<!--<td class="thHeader" th:text="${userInputs.productSelected.RetailBanking}"></td>-->
+										</tr>
+										<tr>
+											<td class="thHeader">SME</td>
+											<td class="thHeader" th:text="${userInputs.productSelected.SMEBanking} ? 'Yes' : 'No' "></td>
+											<!--<td class="thHeader" th:text="${userInputs.productSelected.SMEBanking}"></td>-->
+										</tr>
+										<tr class="trbg">
+											<td>&nbsp;</td>	 <td>&nbsp;</td>
+										</tr>
+										<tr class="trbg">
+											<td>&nbsp;</td> <td >&nbsp;</td>
+										</tr>
+									</table>
+								</td>
+							</tr>
+						</table>
+
+					</div>
 
 					<table id="idAssumption">
 						<thead>
 							<tr>
-								<th class="td1">Select All<br> <input type="checkbox"
-									id="idSelectAll" />
+								<th class="td1">Select All<br>
+									<input type="checkbox" id="idSelectAll"/>
 								</th>
 								<th class="td2">Sr. No.</th>
 								<th class="td3">Module</th>
 								<th class="td4">Sub Module</th>
 								<th class="td5">Product Mapping</th>
+								<th class="td6">Channel</th>
 							</tr>
 						</thead>
 						<tbody>
 							<!-- <p th:text="${modules}"></p> -->
 
-							<div th:remove="tag" th:each="moduleslist:${modules}"
-								th:with="articleCount=${moduleslist.subModules.size()}">
+							<div th:remove="tag" th:each="moduleslist:${modules.objlstResponse}"
+								th:with="subModuleCount=${moduleslist.subModules.size()}">
 
-								<div th:if="${articleCount>0}">
+								<div th:if="${subModuleCount>0}">
 									<tr>
-										<td th:rowspan="${moduleslist.subModules.size()+1}"
-											class="td1"><input type="checkbox" name="assum"
-											class="checkBoxClass" value="@{moduleslist.ModuleId}"></td>
+										<td th:rowspan="${moduleslist.subModules.size()+1}" class="td1">
+											<input type="checkbox" name="moduleIds"
+											class="checkBoxClass" th:value="${moduleslist.ModuleId}"></td>
 
 										<td th:text="${moduleslist.ModuleId}"
 											th:rowspan="${moduleslist.subModules.size()+1}" class="td2"></td>
 										<td th:text="${moduleslist.ModuleName}"
 											th:rowspan="${moduleslist.subModules.size()+1}" class="td3"></td>
-                                   <!--  <td
-										th:text="${articleCount>0}?${moduleslist.submodule[0].submoduleName}:''"
-										class="td4"></td>
-									
-									<td
-										th:text="${articleCount>0}?${moduleslist.submodule[0].productMapping}:''"
-										class="td5"></td>  -->
-									
 									</tr>
 									<tr th:each="sub:${moduleslist.subModules}">
 
-										<td th:text="${sub}" style="text-align: left;"></td>
-										<td style="text-align: center;">pm</td>
+										<td th:text="${sub.submoduleName}" style="text-align: left;"></td>
+										<td th:text="${sub.productMapping}" style="text-align: center;">&nbsp;</td>
+										<td th:text="${sub.channel}" style="text-align: center;">&nbsp;</td>
 									</tr>
 								</div>
 
-								<div th:if="${articleCount==0}">
+								<div th:if="${subModuleCount==0}">
 									<tr>
 										<td class="td1"><input type="checkbox" name="assum"
 											class="checkBoxClass" value="@{moduleslist.ModuleId}"></td>
 										<td th:text="${moduleslist.ModuleId}" class="td2"></td>
 										<td th:text="${moduleslist.ModuleName}" class="td3"></td>
 										<td th:text="${moduleslist.subModules}" class="td4" style="text-align: left;"></td>
-										<td style="text-align: center;">pm</td>
+										<td style="text-align: center;">&nbsp;</td>
 
 									</tr>
 								</div>
@@ -114,7 +203,7 @@
 
 				</div>
 				<div style="text-align: center; margin-top: 35px;">
-					<button class="button" id="idExport" name="export">Export</button>
+					<button class="button" id="idSubmit" name="submit">Submit</button>
 				</div>
 			</form>
 		</div>

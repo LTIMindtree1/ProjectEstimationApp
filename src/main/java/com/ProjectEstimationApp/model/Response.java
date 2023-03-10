@@ -1,11 +1,13 @@
 package com.ProjectEstimationApp.model;
 
+import com.ProjectEstimationApp.entity.SubModuleList;
+
 import java.util.List;
 
 public class Response {
 	private long ModuleId;
     private String ModuleName;
-    private List<String> subModules;
+    private List<SubModuleList> subModules;
 
     public long getModuleId() {
 		return ModuleId;
@@ -23,11 +25,11 @@ public class Response {
         ModuleName = moduleName;
     }
 
-    public List<String> getSubModules() {
+    public List<SubModuleList> getSubModules() {
         return subModules;
     }
 
-    public void setSubModules(List<String> subModules) {
+    public void setSubModules(List<SubModuleList> subModules) {
         this.subModules = subModules;
     }
 

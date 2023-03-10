@@ -1,84 +1,204 @@
-<html xmlns:th="http://www.thymeleaf.org">
-<head>
-<meta charset="UTF-8">
-	<link rel="stylesheet" th:href="@{css/questions.css}">
-	 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-	<!-- <script type="text/javascript" src="js/jquery-3.4.1.min.js"></script> -->
-	<script th:src="@{js/questions.js}"></script>
-</head>
-<body class="closed-menu">
+	<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+	<meta charset="UTF-8">
+		<link rel="stylesheet" th:href="@{css/questions.css}">
+		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.2/jspdf.debug.js"></script>
 
-	<nav class="vertical-menu-wrapper">
-		<div class="vertical-menu-logo">
-			<div id="idCompName" style="visibility: hidden; color: #379ece;">LTIMindtree</div>
-			<span class="open-menu-btn">
-				<hr id="burger1" />
-				<hr id="burger2" />
-				<hr id="burger3" />
-			</span>
-		</div>
-		<ul class="vertical-menu">
-			<li><a href="/home">Home</a></li>
-			<li><a href="/estimation">Estimation</a></li>
-			<li><a href="/questions">RFP Questions</a></li>
-			<li><a href="/assumptions">RFP Assumptions</a></li>
-			<li><a href="/risk">Risk</a></li>
-		</ul>
-		<button id="idBtnQueries" name="btnQueries">Ask Queries</button>
-		<ul class="vertical-menu">
-			<li id="user-info">LTIMindtree<span>LTI</span></li>
-		</ul>
-	</nav>
+		<script th:src="@{js/questions.js}"></script>
 
-	<div class="content-wrapper">
-		<div class="contentH">
+		<script type="text/javascript">
+			function GetSelected() {
 
-			<div class="topBar">
-				<img class="logo" src="images/LTI_Logo.png">
-				<p class="topBar-Text">Project Estimation</p>
+				var grid = document.getElementById("idQuestions");
+
+				//Reference the CheckBoxes in Table.
+				var checkBoxes = grid.getElementsByTagName("input");
+
+				let  arrList =[];
+				//Loop through the CheckBoxes.
+				for (var i = 0; i < checkBoxes.length; i++) {
+					if (checkBoxes[i].checked) {
+						var arrData = [];
+						var row = checkBoxes[i].parentNode.parentNode;
+
+						arrData.push(row.cells[1].innerHTML, row.cells[2].innerHTML, row.cells[3].innerHTML, row.cells[4].innerHTML);
+						console.log("Array Data: "+arrData);
+						arrList.push(arrData);
+
+					}
+				}
+				console.log("List Data: "+arrList);
+				DownloadSchedulePDF(arrList);
+
+			}
+		</script>
+	</head>
+	<body class="closed-menu">
+
+
+		<nav class="vertical-menu-wrapper">
+			<div class="vertical-menu-logo">
+				<div id="idCompName" style="visibility: hidden; color: #379ece;">LTIMindtree</div>
+				<span class="open-menu-btn">
+						<hr id="burger1" />
+						<hr id="burger2" />
+						<hr id="burger3" />
+					</span>
 			</div>
+			<ul class="vertical-menu">
+				<li><a href="/home">Home</a></li>
+				<li><a href="/getList">Module List</a></li>
+				<li><a href="/getEstimation">Estimation</a></li>
+				<li><a href="/getQuestion">RFP Questions</a></li>
+				<li><a href="/getAssumption">RFP Assumptions</a></li>
+				<li><a href="/getRisk">Risk</a></li>
+			</ul>
+			<button id="idBtnQueries" name="btnQueries">Ask Queries</button>
+			<ul class="vertical-menu">
+				<li id="user-info">LTIMindtree<span>LTI</span></li>
+			</ul>
+		</nav>
 
-		</div>
-		<div class="content">
-			<form id="idForm">
-				<div id="idParentDiv">
+		<div class="content-wrapper">
+			<div class="contentH">
 
-					<table id="idQuestions">
-					 <thead>
-						<tr>
-							<th class="td1">Select All<br>
-								<input type="checkbox" id="idSelectAll"/>
-							</th>
-							<th class="td2">Sr. No.</th>
-							<th class="td3">Category</th>
-							<th class="td4">Questions</th>
-							<th class="td5">Question Type</th>
-						</tr>
-</thead>
-
-
-<tbody>
- <tr th:each="questionValue:${list}">
-   <td ><input type="checkbox" name="question" class="checkBoxClass" value="@{questionValue.questionId}"></td>
- <td th:text="${questionValue.questionId}"></td>  
-       
-        <td th:text="${questionValue.questionCategory}"></td>
-        <td th:text="${questionValue.questionName}"></td>
-        <td th:text="${questionValue.questionType}"></td>
-        
-        
-  </tr> 
-</tbody>
-					</table>
-
-
+				<div class="topBar">
+					<img class="logo" src="images/LTI_Logo.png">
+					<p class="topBar-Text">Project Estimation</p>
 				</div>
-				<div style="text-align: center; margin-top: 35px;">
-					<button class="button" id="idExport" name="export">Export</button>
-				</div>
-			</form>
-		</div>
-	</div>
 
-</body>
-</html>
+			</div>
+			<div class="content">
+				<form id="idForm">
+					<div id="idParentDiv">
+
+						<table id="idQuestions">
+							 <thead>
+								<tr>
+									<th class="td1">Select All<br>
+										<input type="checkbox" id="idSelectAll"/>
+									</th>
+									<th class="td2">Sequence No.</th>
+									<th class="td3">Category</th>
+									<th class="td4">Questions</th>
+									<th class="td5">Type</th>
+								</tr>
+							</thead>
+
+							<tbody>
+								 <tr th:each="questionValue:${list}">
+									 <td>
+										 <input type="checkbox" name="question" class="checkBoxClass" value="${questionValue.questionId}">
+									 </td>
+									 <td th:text="${questionValue.questionId}"></td>
+									 <td th:text="${questionValue.questionCategory}"></td>
+									 <td th:text="${questionValue.questionName}"></td>
+									 <td th:text="${questionValue.questionType}"></td>
+								  </tr>
+							</tbody>
+						</table>
+
+
+					</div>
+					<div style="text-align: center; margin-top: 35px;">
+						<!--<button class="button" id="idExport1" name="export" onclick="GetSelected()">Export</button>-->
+						<input type="button" class="button"  id="idExport" value="Export" onclick="GetSelected()" />
+					</div>
+				</form>
+			</div>
+		</div>
+
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/2.3.2/jspdf.plugin.autotable.js"></script>
+		<script>
+
+			DownloadSchedulePDF = function (arrList) {
+
+				var doc = new jsPDF('p', 'pt');
+				doc.setFontSize(10);
+				doc.setTextColor(0);
+				doc.setFontStyle('bold');
+				doc.text('FRP Questions', 40, 50);
+				//debugger;
+				var data = getData(1, arrList);
+
+				doc.autoTable(getColumns(), data, {
+					theme: 'grid',
+					startY: 60,
+					styles: {overflow: 'linebreak'},
+
+					columnStyles: {
+						 qId: {columnWidth: 80},
+						 category:{columnWidth:80},
+						 question: {columnWidth: 275},
+						 qType: {columnWidth: 80}
+					},
+
+					drawRow: function (row, data) {
+						// Colspan
+						doc.setFontStyle('bold');
+						doc.setFontSize(10);
+						if (row.index === 0) {
+							doc.setTextColor(200, 0, 0);
+							doc.rect(data.settings.margin.left, row.y, data.table.width, 20, 'S');
+							data.cursor.y += 20;
+						}
+								//adding page
+						if (row.index % 5 === 0) {
+							var posY = row.y + row.height * 6 + data.settings.margin.bottom;
+							if (posY > doc.internal.pageSize.height) {
+								data.addPage();
+							}
+						}
+					},
+					drawCell: function (cell, data) {
+						// Rowspan
+						if (data.column.dataKey === 'id') {
+							if (data.row.index % 5 === 0) {
+								doc.rect(cell.x, cell.y, data.table.width, cell.height * 5, 'S');
+								doc.autoTableText(data.row.index / 5 + 1 + '', cell.x + cell.width / 2, cell.y + cell.height * 5 / 2, {
+									halign: 'center',
+									valign: 'middle'
+								});
+							}
+							return false;
+						}
+					}
+				});
+				 doc.save('RFP Questions.pdf');
+			};
+
+			function getData(rowCount, arrList) {
+
+				rowCount = rowCount || 4;
+				var data = [];
+
+				for (var i = 0; i <= (arrList.length-1); i++) {
+					data.push({
+						//id: j,
+						qId: arrList[i][0],
+						category: arrList[i][1],
+						question: arrList[i][2],
+						qType: arrList[i][3],
+					});
+				}
+
+				return data;
+			}
+
+
+			// Returns a new array each time to avoid pointer issues
+			var getColumns = function () {
+				return [
+					//{title: "Strategic Activities", dataKey: "id"},
+					{title: "Sequence No.", dataKey: "qId"},
+					{title: "Category", dataKey: "category"},
+					{title: "Question", dataKey: "question"},
+					{title: "Type", dataKey: "qType"}
+
+				];
+			};
+
+		</script>
+	</body>
+	</html>

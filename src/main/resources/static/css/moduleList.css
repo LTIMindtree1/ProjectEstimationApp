@@ -195,13 +195,16 @@ display: none;
 	width: 6%;
 }
 .td3{
-	width: 6%;
+	width: 17%;
 }
 .td4{
-	width: 62%;
+	width: 55%;
 }
 .td5{
-	width: 20%;
+	width: 8%;
+}
+.td6{
+	width: 8;
 }
 
 #idAssumption th{
@@ -214,6 +217,16 @@ tr > td:first-child {
     text-align: center;
 }
 
+.thHeader{
+    border: 1px solid #5db8e3;
+    width: 1%;
+}
+td table{
+    border: 1px solid #5db8e3;
+}
+.trbg{
+    background-color: #dfdfdf;
+}
 
 
 

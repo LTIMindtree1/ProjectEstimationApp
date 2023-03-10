@@ -1,10 +1,10 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
-	<link rel="stylesheet" th:href="@{css/questions.css}">
+	<link rel="stylesheet" th:href="@{css/home.css}">
 	 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 	<!-- <script type="text/javascript" src="js/jquery-3.4.1.min.js"></script> -->
-	<script th:src="@{js/questions.js}"></script>
+	<script th:src="@{js/home.js}"></script>
 </head>
 <body class="closed-menu">
 
@@ -19,6 +19,7 @@
 		</div>
 		<ul class="vertical-menu">
 			<li><a href="/home">Home</a></li>
+			<li><a href="/getList">Module List</a></li>
 			<li><a href="/getEstimation">Estimation</a></li>
 			<li><a href="/getQuestion">RFP Questions</a></li>
 			<li><a href="/getAssumption">RFP Assumptions</a></li>
@@ -42,38 +43,14 @@
 		<div class="content">
 			<form id="idForm">
 				<div id="idParentDiv">
+					<h2>Welcome to Estimation Calculation</h2>
 
-					<table id="idQuestions">
-					 <thead>
-						<tr>
-							<th class="td1">Select All<br>
-								<input type="checkbox" id="idSelectAll"/>
-							</th>
-							<th class="td2">Sr. No.</th>
-							<th class="td3">Category</th>
-							<th class="td4">Questions</th>
-							<th class="td5">Question Type</th>
-						</tr>
-</thead>
-<tbody>
- <tr th:each="employee:${qc}">
-  <td ><input type="checkbox" name="question" class="checkBoxClass" value="@{employee.id}"></td>
- <td th:text="${employee.id}"></td>
-        
-        <td th:text="${employee.category}"></td>
-        <td th:text="${employee.question}"></td>
-        <td th:text="${employee.type}"></td>
-        
-        
-  </tr> 
-</tbody>
-					</table>
 
 
 
 				</div>
 				<div style="text-align: center; margin-top: 35px;">
-					<button class="button" id="idExport" name="export">Export</button>
+
 				</div>
 			</form>
 		</div>

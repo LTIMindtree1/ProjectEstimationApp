@@ -2,6 +2,7 @@ package com.ProjectEstimationApp.controller;
 
 import com.ProjectEstimationApp.entity.*;
 import com.ProjectEstimationApp.model.EstimationRequest;
+import com.ProjectEstimationApp.model.ProspectModuleResponse;
 import com.ProjectEstimationApp.model.Response;
 import com.ProjectEstimationApp.repository.ModuleRepository;
 import com.ProjectEstimationApp.repository.SubModuleRepository;
@@ -45,15 +46,15 @@ public class EstimationController {
 		List<AssumptionList> assumptionList = moduleDBService.getAssumptionList();
 		return ResponseEntity.ok(assumptionList);
 	}
-	@GetMapping("/getRisk")
+	@GetMapping("/getRisk1")
 	public ResponseEntity<List<RiskList>> getRiskList(){
 		List<RiskList> riskList = moduleDBService.getRisk();
 		return ResponseEntity.ok(riskList);
 	}
 	
-	public ResponseEntity<List<Response>> getModuleList(@RequestBody EstimationRequest estimationRequest){
-		List<Response> moduleListResponses = moduleDBService.getModuleList(estimationRequest);
-		return ResponseEntity.ok(moduleListResponses);
+	public ResponseEntity<ProspectModuleResponse> getModuleList(@RequestBody EstimationRequest estimationRequest){
+		ProspectModuleResponse objProspectModuleResponse = moduleDBService.getModuleList(estimationRequest);
+		return ResponseEntity.ok(objProspectModuleResponse);
 	}
 
 }

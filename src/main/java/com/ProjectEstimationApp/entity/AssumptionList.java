@@ -15,7 +15,7 @@ import javax.persistence.Table;
 @Table(name = "assumptionlist")
 public class AssumptionList {
     @Id
-    private Long assumptionsId;
+    private String assumptionsId;
     private String assumptionsCategory;
     private String assumptionsName;
     private String assumptionsType;

@@ -17,6 +17,6 @@ public interface ModuleDBService {
 
     List<RiskList> getRisk();
 
-    List<Response> getModuleList(EstimationRequest estimationRequest);
+    ProspectModuleResponse getModuleList(EstimationRequest estimationRequest);
 
 }
