@@ -1,0 +1,63 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+	<link rel="stylesheet" th:href="@{css/home.css}">
+	 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<!-- <script type="text/javascript" src="js/jquery-3.4.1.min.js"></script> -->
+	<script th:src="@{js/home.js}"></script>
+</head>
+<body class="closed-menu">
+
+	<nav class="vertical-menu-wrapper">
+		<div class="vertical-menu-logo">
+			<div id="idCompName" style="visibility: hidden; color: #379ece;">LTIMindtree</div>
+			<span class="open-menu-btn">
+				<hr id="burger1" />
+				<hr id="burger2" />
+				<hr id="burger3" />
+			</span>
+		</div>
+		<ul class="vertical-menu">
+			<li><a href="/home">Home</a></li>
+			<li><a href="/getList">Module List</a></li>
+			<li><a href="/getEstimation">Estimation</a></li>
+			<li><a href="/getQuestion">RFP Questions</a></li>
+			<li><a href="/getAssumption">RFP Assumptions</a></li>
+			<li><a href="/getRisk">Risk</a></li>
+		</ul>
+		<button id="idBtnQueries" name="btnQueries">Ask Queries</button>
+		<ul class="vertical-menu">
+			<li id="user-info">LTIMindtree<span>LTI</span></li>
+		</ul>
+	</nav>
+
+	<div class="content-wrapper">
+		<div class="contentH">
+
+			<div class="topBar">
+				<img class="logo" src="images/LTI_Logo.png">
+				<p class="topBar-Text">Project Estimation</p>
+			</div>
+
+		</div>
+		<div class="content">
+			<form id="idForm">
+				<div id="idParentDiv">
+					<h2>Download Section</h2>
+
+					<select name="fileDownload">
+						<option value="">SME</option>
+						<option value="">Retail</option>
+						<option value="">Wealth</option>
+					</select>
+
+				</div>
+				<div style="text-align: center; margin-top: 35px;">
+
+				</div>
+			</form>
+		</div>
+	</div>
+
+</body>
+</html>

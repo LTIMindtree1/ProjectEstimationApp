@@ -65,7 +65,7 @@ public class EstimationControllerWEB {
 //		List<RiskList> riskList = moduleDBService.getRisk();
 //		System.out.println(riskList);
 //		model.addAttribute("riskList",riskList);
-		return "moduleList";
+		return "list";
 	}
 
 	@PostMapping("/getmoduleList")
