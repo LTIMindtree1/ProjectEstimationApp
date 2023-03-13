@@ -1,7 +1,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
-	<link rel="stylesheet" th:href="@{css/home.css}">
+	<link rel="stylesheet" th:href="@{css/list.css}">
 	 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 	<!-- <script type="text/javascript" src="js/jquery-3.4.1.min.js"></script> -->
 	<script th:src="@{js/home.js}"></script>
@@ -45,15 +45,17 @@
 				<div id="idParentDiv">
 					<h2>Download Section</h2>
 
-					<select name="fileDownload">
-						<option value="">SME</option>
-						<option value="">Retail</option>
-						<option value="">Wealth</option>
+					<label for="idFileDownload">Choose a PPT:</label>
+					<select id="idFileDownload" name="fileDownload" style="width: 150px;">
+						<option value="">Select PPT</option>
+						<option value="SME">SME</option>
+						<option value="Retail">Retail</option>
+						<option value="Wealth">Wealth</option>
 					</select>
 
 				</div>
 				<div style="text-align: center; margin-top: 35px;">
-
+					<input type="button" class="button"  id="idDownload" value="Download" onclick="" />
 				</div>
 			</form>
 		</div>
