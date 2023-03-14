@@ -3,15 +3,19 @@ package com.ProjectEstimationApp.service;
 import com.ProjectEstimationApp.entity.*;
 import com.ProjectEstimationApp.model.*;
 import com.ProjectEstimationApp.repository.*;
+import org.apache.tomcat.util.http.fileupload.ByteArrayOutputStream;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.servlet.ServletOutputStream;
+import javax.servlet.http.HttpServletResponse;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 @Service
 public class ModuleDBServiceImpl implements ModuleDBService {
@@ -101,6 +105,43 @@ public class ModuleDBServiceImpl implements ModuleDBService {
         objProspectModuleResponse.setObjlstResponse(response);
 
         return objProspectModuleResponse;
+    }
+
+    @Override
+    public void downloadPPT(HttpServletResponse response, String product) throws IOException {
+        String Path;
+        if(product.equalsIgnoreCase("SME"))
+            Path = "ppt/SME.pptx";
+        else if(product.equalsIgnoreCase("RETAIL"))
+            Path = "ppt/RETAIL.pptx";
+        else if (product.equalsIgnoreCase("WEALTH"))
+            Path = "ppt/WEALTH.pptx";
+        else
+            throw new FileNotFoundException();
+
+        ClassLoader classLoader = getClass().getClassLoader();
+        InputStream inputStream = classLoader.getResourceAsStream(Path);
+
+        ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+
+        byte[] buffer = new byte[4096];
+        int bytesRead = -1;
+
+        while ((bytesRead = inputStream.read(buffer)) != -1) {
+            outputStream.write(buffer, 0, bytesRead);
+        }
+
+        byte[] pptBytes = outputStream.toByteArray();
+        downloadPPT(response, pptBytes, Path);
+    }
+
+    public void downloadPPT(HttpServletResponse response, byte[] pptBytes, String fileName) throws IOException {
+        response.setContentType("application/vnd.ms-powerpoint");
+        response.setHeader("Content-Disposition", "attachment; filename=" + fileName.toUpperCase());
+        ServletOutputStream outputStream = response.getOutputStream();
+        outputStream.write(pptBytes);
+        outputStream.flush();
+        outputStream.close();
     }
 
     private String getProductSelected(ProductSelected productSelected) {
