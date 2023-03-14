@@ -149,24 +149,24 @@ td > p{
 display: none;
 }
 
-/************************************ moduleList.html ************************************/
+/************************************ Questions.html ************************************/
 
-#idAssumption {
+#idQuestions {
   font-family: Arial, Helvetica, sans-serif;
   border-collapse: collapse;
   width: 100%;
 }
 
-#idAssumption td, #customers th {
+#idQuestions td, #customers th {
   border: 1px solid #ddd;
   padding: 8px;
 }
 
-#idAssumption tr:nth-child(even){background-color: #f2f2f2;}
+#idQuestions tr:nth-child(even){background-color: #f2f2f2;}
 
-#idAssumption tr:hover {background-color: #ddd;}
+#idQuestions tr:hover {background-color: #ddd;}
 
-#idAssumption th {
+#idQuestions th {
   padding-top: 12px;
   padding-bottom: 12px;
   text-align: left;
@@ -195,19 +195,16 @@ display: none;
 	width: 6%;
 }
 .td3{
-	width: 17%;
+	width: 6%;
 }
 .td4{
-	width: 55%;
+	width: 62%;
 }
 .td5{
-	width: 8%;
-}
-.td6{
-	width: 8;
+	width: 20%;
 }
 
-#idAssumption th{
+#idQuestions th{
 	position: sticky;
     top: 0;
     text-align: center;
@@ -217,16 +214,6 @@ tr > td:first-child {
     text-align: center;
 }
 
-.thHeader{
-    border: 1px solid #5db8e3;
-    width: 1%;
-}
-td table{
-    border: 1px solid #5db8e3;
-}
-.trbg{
-    background-color: #dfdfdf;
-}
 
 
 

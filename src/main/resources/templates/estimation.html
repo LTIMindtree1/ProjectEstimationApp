@@ -8,27 +8,28 @@
 </head>
 <body class="closed-menu">
 
-	<nav class="vertical-menu-wrapper">
-		<div class="vertical-menu-logo">
-			<div id="idCompName" style="visibility: hidden; color: #379ece;">LTIMindtree</div>
-			<span class="open-menu-btn">
-				<hr id="burger1"/>
-				<hr id="burger2"/>
-				<hr id="burger3"/>
+<nav class="vertical-menu-wrapper">
+	<div class="vertical-menu-logo">
+		<div id="idCompName" style="visibility: hidden; color: #379ece;">LTIMindtree</div>
+		<span class="open-menu-btn">
+				<hr id="burger1" />
+				<hr id="burger2" />
+				<hr id="burger3" />
 			</span>
-		</div>
-		<ul class="vertical-menu">
-			<li><a href="/home">Home</a></li>
-			<li><a href="/getEstimation">Estimation</a></li>
-			<li><a href="/getQuestion">RFP Questions</a></li>
-			<li><a href="/getAssumption">RFP Assumptions</a></li>
-			<li><a href="/getRisk">Risk</a></li>
-		</ul>
-			<button id="idBtnQueries" name="btnQueries">Ask Queries</button>
-		<ul class="vertical-menu">
-			<li id="user-info">LTIMindtree<span>LTI</span></li>
-		</ul>
-	</nav>
+	</div>
+	<ul class="vertical-menu">
+		<li><a href="/home">Home</a></li>
+		<li><a href="/getList">Module List</a></li>
+		<li><a href="/getEstimation">Estimation</a></li>
+		<li><a href="/getQuestion">RFP Questions</a></li>
+		<li><a href="/getAssumption">RFP Assumptions</a></li>
+		<li><a href="/getRisk">Risk</a></li>
+	</ul>
+	<button id="idBtnQueries" name="btnQueries">Ask Queries</button>
+	<ul class="vertical-menu">
+		<li id="user-info">LTIMindtree<span>LTI</span></li>
+	</ul>
+</nav>
 
 	<div class="content-wrapper">
 		<div class="contentH">
@@ -40,7 +41,7 @@
 
 		</div>
 		<div class="content">
-			<form id="idForm"  th:action="@{/getModules}"  method="GET">
+			<form id="idForm"  th:action="@{/getmoduleList}"  method="POST">
 				<div id="idParentDiv">
 					<div id="idProspectDiv">
 						<table id="idTableProspect">
@@ -51,27 +52,27 @@
 							</tr>
 							<tr>
 								<td>Name</td>
-								<td><input type="text" id="idName" name="name"></td>
+								<td><input type="text" id="idName" name="name" required></td>
 							</tr>
 							<tr>
 								<td>Region</td>
-								<td><input type="text" id="idRegion" name="region"></td>
+								<td><input type="text" id="idRegion" name="region" required></td>
 							</tr>
 							<tr>
 								<td>BSG Contact</td>
-								<td><input type="text" id="idBsgContact"   name="bsgContact"></td>
+								<td><input type="text" id="idBsgContact"   name="bsgContact" required></td>
 							</tr>
 							<tr>
 								<td>PDM contact</td>
-								<td><input type="text" name="pdmContact"></td>
+								<td><input type="text" id="idPdmContact" name="pdmContact" required></td>
 							</tr>
 							<tr>
 								<td>Tfocus ID</td>
-								<td><input type="text" name="tfocusID"></td>
+								<td><input type="text" id="idTfocusID" name="tfocusID" required></td>
 							</tr>
 							<tr>
 								<td>CEM Team(Manager,TFT)</td>
-								<td><input type="text" name="cemTeam"></td>
+								<td><input type="text" id="idCemTeam" name="cemTeam" required></td>
 							</tr>
 						</table>
 					</div>	
@@ -175,7 +176,7 @@
 		        					<p align="center">Product Selection</p></td>
 							</tr>
 							<tr>
-								<td>RB</td>
+								<td>Retail Banking</td>
 								<td><input type="checkbox" id="idProductRB" name="product" value="rb"></td>
 							</tr>
 							<tr>

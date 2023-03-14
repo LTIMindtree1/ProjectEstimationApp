@@ -5,6 +5,14 @@ public class QuestionListResponse {
     private String questionType;
     private String questionCategory;
 
+    public String getQuestionCategory() {
+        return questionCategory;
+    }
+
+    public void setQuestionCategory(String questionCategory) {
+        this.questionCategory = questionCategory;
+    }
+
     public String getQuestionName() {
         return questionName;
     }
@@ -27,6 +35,7 @@ public class QuestionListResponse {
         return "QuestionListResponse{" +
                 "questionName='" + questionName + '\'' +
                 ", questionType='" + questionType + '\'' +
+                ", questionCategory='" + questionCategory + '\'' +
                 '}';
     }
 }

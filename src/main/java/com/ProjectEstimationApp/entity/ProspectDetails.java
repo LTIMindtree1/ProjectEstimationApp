@@ -10,12 +10,11 @@ public class ProspectDetails {
 	private String pdmContact;
 	private String tfocusID;
 	private String cemTeam;
-
-	private String[] channel;
 	private String languageLTR;
 	private String languageRTL;
 	private String transact;
-	
+
+	private String[] channel;
 	private String[] product;
 
 	public ProspectDetails() {
@@ -25,8 +24,8 @@ public class ProspectDetails {
 	
 
 	public ProspectDetails(String name, String region, String bsgContact, String pdmContact, String tfocusID,
-			String cemTeam, String[] channel, String languageLTR, String languageRTL, String transact,
-			String[] product) {
+						   String cemTeam, String[] channel, String languageLTR, String languageRTL, String transact,
+						   String[] product) {
 		super();
 		this.name = name;
 		this.region = region;
