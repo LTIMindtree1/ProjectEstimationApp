@@ -51,9 +51,9 @@ public class EstimationController {
 		return ResponseEntity.ok(riskList);
 	}
 
-	@GetMapping("/download-ppt/{product}")
-	public void PPT(@PathVariable String product, HttpServletResponse response) throws IOException {
-		moduleDBService.downloadPPT(response, product);
+	@GetMapping("/download-ppt/{action}")
+	public void PPT(@PathVariable String action, HttpServletResponse response) throws IOException {
+		moduleDBService.downloadPPT(response, action);
 	}
 
 }
