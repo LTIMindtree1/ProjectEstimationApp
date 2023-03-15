@@ -1,19 +1,18 @@
 package com.ProjectEstimationApp.controller;
 
 import com.ProjectEstimationApp.entity.*;
-import com.ProjectEstimationApp.model.EstimationRequest;
-import com.ProjectEstimationApp.model.ProspectModuleResponse;
-import com.ProjectEstimationApp.model.Response;
 import com.ProjectEstimationApp.repository.ModuleRepository;
 import com.ProjectEstimationApp.repository.SubModuleRepository;
 import com.ProjectEstimationApp.service.ModuleDBService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.servlet.http.HttpServletResponse;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.List;
 
 @RestController
@@ -51,10 +50,10 @@ public class EstimationController {
 		List<RiskList> riskList = moduleDBService.getRisk();
 		return ResponseEntity.ok(riskList);
 	}
-	
-	public ResponseEntity<ProspectModuleResponse> getModuleList(@RequestBody EstimationRequest estimationRequest){
-		ProspectModuleResponse objProspectModuleResponse = moduleDBService.getModuleList(estimationRequest);
-		return ResponseEntity.ok(objProspectModuleResponse);
+
+	@GetMapping("/download-ppt/{action}")
+	public void PPT(@PathVariable String action, HttpServletResponse response) throws IOException {
+		moduleDBService.downloadPPT(response, action);
 	}
 
 }
