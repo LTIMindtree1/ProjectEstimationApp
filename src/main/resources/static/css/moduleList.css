@@ -227,7 +227,9 @@ td table{
 .trbg{
     background-color: #dfdfdf;
 }
-
+.remove{
+  display : none;
+}
 
 
 
