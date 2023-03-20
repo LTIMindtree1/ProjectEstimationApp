@@ -35,7 +35,7 @@ $(".checkBoxClass").click(function () {
     $("#idSelectAll").prop('checked', false);
 });*/
 
- $('#idSelectAll').on('click',function(){
+    $('#idSelectAll').on('click',function(){
         if(this.checked){
             $('.checkBoxClass').each(function(){
                 this.checked = true;
@@ -54,4 +54,53 @@ $(".checkBoxClass").click(function () {
             $('#idSelectAll').prop('checked',false);
         }
     });
+});
+
+$(function(){
+   // Show hide functionality of ROWS...
+
+   // Step 1: On checkbox check -> add 'listed' class to row and it's sub rows
+       $('.checkBoxClass').on('click',function(){
+           $tr=$(this).closest('tr');
+           rowspan=$(this).attr('rowspan');
+           console.log("ROW Span : " + rowspan);
+           index=$('tr').index($tr);
+           tot=parseInt(index)+parseInt(rowspan);
+           for(var i=index,len=tot;i<len;i++){
+                if($('tr:eq('+i+')').hasClass("listed")){
+                    $('tr:eq('+i+')').removeClass("listed");
+                }else{
+                    $('tr:eq('+i+')').addClass("listed");
+                }
+           }
+       });
+
+    // Step 2: On button 'Next' click, hide all rows that doesn't contains 'listed' class.
+        $('#idNext').on('click', function(e){
+
+            $("#idAssumption tr").each(function () {
+                if (!($(this).hasClass("listed") || $(this).hasClass("hero"))) {
+                    $(this).addClass("remove");
+                }
+            });
+
+            $("#idSelectAll").attr("disabled", true);
+            $('#idBtnBack').css("visibility", "visible");
+            e.preventDefault();
+        });
+
+    // Step 3: Revert i.e. show all hidden rows.
+        $('#idBtnBack').on('click', function(e){
+
+            $('#idAssumption').find('.remove').each(function(){
+                $(this).removeClass("remove");
+            });
+
+            $("#idSelectAll").attr("disabled", false);
+            $('#idBtnBack').css("visibility", "hidden");
+            e.preventDefault();
+        });
+
+
+
 });

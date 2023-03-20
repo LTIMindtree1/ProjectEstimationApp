@@ -3,7 +3,7 @@
 	<meta charset="UTF-8">
 	<link rel="stylesheet" th:href="@{css/moduleList.css}">
 	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-	<script th:src="@{js/assumption.js}"></script>
+	<script th:src="@{js/moduleList.js}"></script>
 </head>
 <body class="closed-menu">
 
@@ -141,7 +141,7 @@
 
 					<table id="idAssumption">
 						<thead>
-							<tr>
+							<tr class="hero">
 								<th class="td1">Select All<br>
 									<input type="checkbox" id="idSelectAll"/>
 								</th>
@@ -160,8 +160,9 @@
 
 								<div th:if="${subModuleCount>0}">
 									<tr>
-										<td th:rowspan="${moduleslist.subModules.size()+1}" class="td1">
+										<td th:rowspan="${moduleslist.subModules.size()+1}" class="td1 rowspan">
 											<input type="checkbox" name="moduleIds"
+											th:rowspan="${moduleslist.subModules.size()+1}"
 											class="checkBoxClass" th:value="${moduleslist.ModuleId}"></td>
 
 										<td th:text="${moduleslist.ModuleId}"
@@ -203,7 +204,8 @@
 
 				</div>
 				<div style="text-align: center; margin-top: 35px;">
-					<button class="button" id="idSubmit" name="submit">Submit</button>
+					<button class="button" id="idBtnBack" name="Back" style="visibility: hidden;">Back</button>
+					<button class="button" id="idNext" onclick="return false;" name="Next">Next</button>
 				</div>
 			</form>
 		</div>
