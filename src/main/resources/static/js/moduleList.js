@@ -54,6 +54,7 @@ $(".checkBoxClass").click(function () {
             $('#idSelectAll').prop('checked',false);
         }
     });
+
 });
 
 $(function(){
@@ -78,14 +79,47 @@ $(function(){
     // Step 2: On button 'Next' click, hide all rows that doesn't contains 'listed' class.
         $('#idNext').on('click', function(e){
 
-            $("#idAssumption tr").each(function () {
-                if (!($(this).hasClass("listed") || $(this).hasClass("hero"))) {
-                    $(this).addClass("remove");
-                }
-            });
+            if($('#idNext').text()=="Next"){
 
-            $("#idSelectAll").attr("disabled", true);
-            $('#idBtnBack').css("visibility", "visible");
+                $("#idAssumption tr").each(function () {
+                    if (!($(this).hasClass("listed") || $(this).hasClass("hero"))) {
+                        $(this).addClass("remove");
+                    }
+                });
+
+                $("#idSelectAll").attr("disabled", true);
+                $('#idBtnBack').css("visibility", "visible");
+                $('#idNext').text("Submit");
+            }else{
+                    alert("Checking...");
+
+                    var selected = []; // initialize array
+                    $('#idContent input[type=checkbox]').each(function() {
+                       if ($(this).is(":checked")) {
+                              selected.push($(this).attr('value'));
+                       }
+                    });
+                    alert("Check Boxes: " + selected.length);
+
+//                $.ajax({
+//                    url: '/populateExcel',
+//                    method: 'GET',
+//                    xhrFields: {
+//                        responseType: 'blob'
+//                    },
+//                    success: function (data) {
+//                        var a = document.createElement('a');
+//                        var url = window.URL.createObjectURL(data);
+//                        a.href = url;
+//                        a.download = 'Estimation.xlsx';
+//                        document.body.append(a);
+//                        a.click();
+//                        a.remove();
+//                        window.URL.revokeObjectURL(url);
+//                    }
+//                });
+            }
+
             e.preventDefault();
         });
 
@@ -98,6 +132,7 @@ $(function(){
 
             $("#idSelectAll").attr("disabled", false);
             $('#idBtnBack').css("visibility", "hidden");
+            $('#idNext').text("Next");
             e.preventDefault();
         });
 

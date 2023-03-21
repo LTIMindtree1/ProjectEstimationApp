@@ -14,7 +14,7 @@ spring:
   datasource:
     url: jdbc:mysql://localhost:3306/estimation
     username: root
-    password: Sus@281996
+    password: sachin
     driver-class-name: com.mysql.cj.jdbc.Driver
 
 

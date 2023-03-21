@@ -43,27 +43,28 @@ $(document).ready(function(){
             $('#idSelectAll').prop('checked',false);
         }
     });
-$('#idDownload').on('click', function () {
-    var data = $("#idFileDownload").val();
 
-    $.ajax({
-        url: '/download-ppt/'+data,
-        method: 'GET',
-        xhrFields: {
-            responseType: 'blob'
-        },
-        success: function (data) {
-            var a = document.createElement('a');
-            var url = window.URL.createObjectURL(data);
-            a.href = url;
-            a.download = $("#idFileDownload").val()+'.pptx';
-            document.body.append(a);
-            a.click();
-            a.remove();
-            window.URL.revokeObjectURL(url);
-        }
+    $('#idDownload').on('click', function () {
+        var data = $("#idFileDownload").val();
+
+        $.ajax({
+            url: '/download-ppt/'+data,
+            method: 'GET',
+            xhrFields: {
+                responseType: 'blob'
+            },
+            success: function (data) {
+                var a = document.createElement('a');
+                var url = window.URL.createObjectURL(data);
+                a.href = url;
+                a.download = $("#idFileDownload").val()+'.pptx';
+                document.body.append(a);
+                a.click();
+                a.remove();
+                window.URL.revokeObjectURL(url);
+            }
+        });
     });
-});
 
 
 });

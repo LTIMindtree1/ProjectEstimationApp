@@ -144,6 +144,36 @@ public class ModuleDBServiceImpl implements ModuleDBService {
         outputStream.close();
     }
 
+    @Override
+    public void populateExcel(HttpServletResponse response, String excel) throws IOException {
+        String Path = "excel/Estimation Phase.xlsx";
+
+        ClassLoader classLoader = getClass().getClassLoader();
+        InputStream inputStream = classLoader.getResourceAsStream(Path);
+
+        ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+
+        byte[] buffer = new byte[4096];
+        int bytesRead = -1;
+
+        while ((bytesRead = inputStream.read(buffer)) != -1) {
+            outputStream.write(buffer, 0, bytesRead);
+        }
+
+        byte[] excelBytes = outputStream.toByteArray();
+        populateExcel(response, excelBytes, Path);
+    }
+
+    public void populateExcel(HttpServletResponse response, byte[] excelBytes, String fileName) throws IOException {
+
+        response.setContentType("application/vnd.ms-excel");
+        response.setHeader("Content-Disposition", "attachment; filename=" + fileName.toUpperCase());
+        ServletOutputStream outputStream = response.getOutputStream();
+        outputStream.write(excelBytes);
+        outputStream.flush();
+        outputStream.close();
+    }
+
     private String getProductSelected(ProductSelected productSelected) {
         String product = null;
         if(productSelected.isRetailBanking() && productSelected.isSMEBanking()){

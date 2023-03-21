@@ -56,4 +56,9 @@ public class EstimationController {
 		moduleDBService.downloadPPT(response, action);
 	}
 
+	@GetMapping("/populateExcel")
+	public void populateExcel(HttpServletResponse response) throws IOException {
+		moduleDBService.populateExcel(response, "excel");
+	}
+
 }

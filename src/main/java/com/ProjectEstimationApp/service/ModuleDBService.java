@@ -22,4 +22,6 @@ public interface ModuleDBService {
     ProspectModuleResponse getModuleList(EstimationRequest estimationRequest);
 
     void downloadPPT(HttpServletResponse response, String product) throws IOException;
+
+    void populateExcel(HttpServletResponse response, String excel) throws IOException;
 }
